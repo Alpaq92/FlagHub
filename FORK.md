@@ -103,9 +103,44 @@ The reworked SVGs are hand-written silhouettes built from primitives and bezier 
 
 ---
 
+## PNG optimization
+
+Every raster asset in the repo has been recompressed losslessly. The upstream PNGs were exported from Sketch's `sketchtool` and were not run through any post-export optimiser, so they carried ~40% recoverable overhead.
+
+### Tool comparison
+
+| Tool | Type | Typical reduction here | Notes |
+|---|---|---|---|
+| `pngcrush` | lossless | ~10–20% | Older, slow, low yield |
+| `OptiPNG` | lossless | ~20–30% | Reference C implementation; single-threaded |
+| **`oxipng`** | **lossless** | **~42%** | Pure-Rust port of OptiPNG, multithreaded, deflate strategy is more exhaustive at the same level |
+| `pngquant` | lossy (palette) | 50–70% | Rejected for this asset set — the subtle top-to-bottom linear gradients defined in every flag SVG (see `linearGradient` defs) would be at risk of visible posterisation or banding once quantised to a 256-colour palette |
+
+`oxipng` was chosen as the best fit: it produces lossless output, so it cannot degrade the gradient fidelity that distinguishes FlagKit's flags from generic flag sets, and its yield is materially higher than the older lossless tools.
+
+### Results
+
+| Path | Files | Before | After | Saved |
+|---|---:|---:|---:|---:|
+| `Assets/PNG/` | 768 | 1,374 KiB | 798 KiB | 42% |
+| `Sources/FlagKit/FlagKit.xcassets/` | 512 | 882 KiB | 504 KiB | 43% |
+| `Header.png` | 1 | 100 KiB | 71 KiB | 29% |
+| **Total** | **1,281** | **2,356 KiB** | **1,373 KiB** | **41.7%** |
+
+To re-run after editing PNG assets:
+
+```sh
+pip install pyoxipng
+python scripts/optimize_pngs.py
+```
+
+The script is idempotent — running it on an already-optimised tree either does nothing or claws back a few more bytes.
+
+---
+
 ## Helper scripts
 
-Three Python utilities live in `scripts/` and are idempotent — running them on a clean tree is a no-op:
+Python utilities in `scripts/`, all idempotent — running them on a clean tree is a no-op:
 
 | Script | Purpose |
 |---|---|
@@ -113,3 +148,4 @@ Three Python utilities live in `scripts/` and are idempotent — running them on
 | `scripts/add_svg_attribution.py` | Prepends a standard MIT attribution comment to every SVG (#106) |
 | `scripts/compute_cn_stars.py` | Reproduces the spec-correct star polygon coordinates for the CN flag (#62) — invoked once to populate `CN.svg`; kept in-tree as a documentation of the construction-sheet math |
 | `scripts/compute_us_stars.py` | Reproduces the 50-star canton layout for the US flag (#76) — same role as the CN script |
+| `scripts/optimize_pngs.py` | Losslessly recompresses every PNG in the repo with `oxipng -o 6`. See [PNG optimization](#png-optimization) above for the tool-choice rationale |
