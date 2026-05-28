@@ -323,6 +323,7 @@ The full PR-to-deploy pipeline is documented in [`.github/AUTOMATION.md`](../.gi
 - **Auto-merge** — any PR that's at least 7 days old, has an `APPROVED` review by a code owner / collaborator / `coderabbitai[bot]`, and has every check green is squash-merged automatically. Runs every 6 hours and on every review event (`auto-merge.yml`).
 - **Changelog** — `changelog.yml` listens for `pull_request: closed (merged)` and prepends a one-line entry under `## [Unreleased]` in [CHANGELOG.md](../CHANGELOG.md), committing back with `[skip ci]` so it doesn't loop.
 - **Release** — every push to main rebuilds the SPM target and xcframework, uploads a tarball as a workflow artefact, and on `v*.*.*` tags also publishes a GitHub Release (`release.yml`).
+- **Upstream sync** — `sync-upstream.yml` runs daily at 02:17 UTC. Fetches `madebybowtie/FlagKit` master, opens or refreshes a `sync/upstream-flagkit` PR titled `chore(sync): merge N commit(s) from upstream FlagKit master` when we're behind. Falls back to an `upstream-sync` + `conflict`-labelled issue when the merge can't auto-resolve. The PR goes through the normal 7-day-from-approval review window (not the Dependabot zero-soak fast-path).
 
 A standalone copy of the same documentation lives in `C:\Users\Alpaq\Documents\github-pr-automation-setup.md` for reuse on other projects.
 

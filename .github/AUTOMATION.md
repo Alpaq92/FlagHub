@@ -1,11 +1,16 @@
 # Repository automation
 
-This directory configures the GitHub-side workflow for FlagHub: PR reviews, security scanning, conditional auto-merge, and rebuild + release on every merge.
+This directory configures the GitHub-side workflow for FlagHub: PR reviews, security scanning, conditional auto-merge, rebuild + release on every merge, and a daily sync from upstream `madebybowtie/FlagKit`.
 
 ## Overview
 
 ```mermaid
 flowchart TD
+    UP([Daily cron 02:17 UTC]):::cron
+    UP --> SYNC[sync-upstream.yml<br/>fetch madebybowtie/FlagKit master]:::sync
+    SYNC --> SYNC_PR([Sync PR<br/>chore sync ...])
+    SYNC_PR --> PR
+
     PR([PR opened]):::start
 
     PR --> CR[CodeRabbit auto-review<br/><code>.coderabbit.yaml</code>]:::review
@@ -38,6 +43,8 @@ flowchart TD
     classDef bypass  fill:#6e7681,stroke:#6e7681,color:#fff
     classDef post    fill:#0969da,stroke:#0969da,color:#fff
     classDef release fill:#cf222e,stroke:#cf222e,color:#fff
+    classDef cron    fill:#1f883d,stroke:#1f883d,color:#fff
+    classDef sync    fill:#a371f7,stroke:#a371f7,color:#fff
 ```
 
 ## Files
@@ -49,8 +56,11 @@ flowchart TD
 | `.github/workflows/ci.yml` | `swift build` / `swift test`, `xcodebuild` for iOS Simulator, `pod lib lint` |
 | `.github/workflows/codeql.yml` | CodeQL `security-and-quality` query suite on Swift, weekly + per-PR |
 | `.github/workflows/security.yml` | gitleaks (secret detection), `dependency-review-action` (PR only), Trivy filesystem scan to SARIF |
-| `.github/workflows/auto-merge.yml` | Polls open PRs every 6 h (and on each review) and squash-merges any that meet all eligibility criteria |
-| `.github/workflows/release.yml` | Builds + tests on every push to main, packages a tarball, publishes a GitHub Release on `v*.*.*` tags |
+| `.github/workflows/auto-merge.yml` | Polls open PRs every 6 h (and on each review / gating-workflow completion) and squash-merges any that meet all eligibility criteria |
+| `.github/workflows/changelog.yml` | On every PR merged into `main`, prepends a bullet under `## [Unreleased]` in `CHANGELOG.md`. Commits as `github-actions[bot]` with `[skip ci]` |
+| `.github/workflows/release.yml` | Builds + tests on every push to main, packages a tarball + xcframework, publishes a GitHub Release on `v*.*.*` tags |
+| `.github/workflows/sync-upstream.yml` | Daily cron (02:17 UTC) that fetches `madebybowtie/FlagKit` master, opens or refreshes a `sync/upstream-flagkit` PR when we're behind. Opens a conflict-labelled issue if the merge can't auto-resolve |
+| `.github/dependabot.yml` | Weekly version-update PRs for the `github-actions` and `swift` ecosystems, Mondays 06:00 UTC, conventional-commits prefixes (`ci:`, `build:`) |
 
 ## Required one-time setup
 
@@ -130,3 +140,19 @@ The workflow re-evaluates the eligible PR set on each of:
 - `workflow_dispatch` (optionally with a `pr_number` input to evaluate a specific PR)
 
 The `workflow_run` triggers are what give Dependabot PRs their "merge within minutes of CI green" behaviour without polling.
+
+## Upstream sync
+
+`.github/workflows/sync-upstream.yml` runs daily at 02:17 UTC (and on `workflow_dispatch`). It:
+
+1. Fetches `madebybowtie/FlagKit` `master`.
+2. Computes how many commits our `main` is behind upstream.
+3. If behind > 0:
+   - **Clean merge** → force-pushes the merge onto the `sync/upstream-flagkit` branch and opens (or refreshes) a PR titled `chore(sync): merge N commit(s) from upstream FlagKit master`, labelled `upstream-sync` + `dependencies`. The PR body lists every commit being merged.
+   - **Conflict** → opens an `upstream-sync` + `conflict`-labelled issue with manual-resolution instructions.
+
+The sync PR's author is `github-actions[bot]`, **not** `dependabot[bot]`, so it does **not** get the Dependabot zero-soak fast-path. It goes through the standard 7-day-from-approval review window — appropriate, because upstream changes can carry breaking API or asset modifications worth eyeballing.
+
+### Workflows don't trigger workflows by default
+
+The default `GITHUB_TOKEN` doesn't trigger downstream workflows on PRs it opens (GitHub's anti-loop policy). Out of the box the sync PR opens but CI / CodeQL / Security stay idle. To wire that up, create a PAT with `repo` scope and add it as the repo secret `SYNC_PAT`; the workflow's `checkout` and `gh` steps both prefer `secrets.SYNC_PAT` over `secrets.GITHUB_TOKEN`. Without it, dispatch CI manually via the PR's *Re-run jobs* button.
