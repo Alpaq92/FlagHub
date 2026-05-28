@@ -84,6 +84,41 @@ jobs:
             FlagHub
         continue-on-error: true
 
+      # swift-create-xcframework's generated project omits the SPM resource
+      # bundle target, so the produced .xcframework has the code but not
+      # FlagHub.xcassets. Copy the bundle that `swift build -c release`
+      # already produced into each framework slice. Safe to use one bundle
+      # across platforms here because every imageset uses idiom=universal —
+      # the compiled Assets.car is platform-independent. We remove the
+      # framework signature after modification; downstream Xcode re-signs
+      # on embed.
+      - name: Inject resource bundle into xcframework slices
+        run: |
+          set -e
+          XCFW=.build/xcframework/FlagHub.xcframework
+          if [[ ! -d "$XCFW" ]]; then
+            echo "::warning::xcframework not produced; skipping bundle injection"
+            exit 0
+          fi
+          BUNDLE=$(find .build -type d -name FlagHub_FlagHub.bundle -not -path "*xcframework*" -not -path "*swift-create-xcframework*" | head -1)
+          if [[ -z "$BUNDLE" ]]; then
+            echo "::error::FlagHub_FlagHub.bundle not found in SPM build output"
+            exit 1
+          fi
+          echo "Source bundle: $BUNDLE"
+          for fw in "$XCFW"/*/FlagHub.framework; do
+            slice=$(basename "$(dirname "$fw")")
+            if [[ -d "$fw/Versions/A/Resources" ]]; then
+              dest="$fw/Versions/A/Resources/"
+            else
+              dest="$fw/"
+            fi
+            echo "Injecting bundle into $slice -> $dest"
+            cp -R "$BUNDLE" "$dest"
+            rm -rf "$fw/_CodeSignature" "$fw/Versions/A/_CodeSignature" 2>/dev/null || true
+          done
+        continue-on-error: true
+
       - name: Archive
         id: archive
         run: |
