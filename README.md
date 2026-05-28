@@ -16,7 +16,7 @@
 
 Beautiful flag icons for usage in apps and on the web. All flags are provided as stand-alone PNG and SVG files. FlagKit also provides an Asset Catalog and framework for easy use on Apple platforms.
 
-The bundled asset set carries **256 flags** — the same set as upstream FlagKit, with several existing flags corrected (AL eagle, CN stars, MD coat of arms, US stripes and stars, ZW Hungwe bird, CH and VA squared) and the SY/IR upstream PRs applied.
+The bundled asset set carries **256 flags** — the same set as upstream FlagKit. CH and VA are now square per spec, the upstream SY/IR/ZA pull requests are applied, and the WW default flag is restored. All other artwork remains pristine Bowtie/FlagKit.
 
 ## Installation (iOS, macOS, tvOS, visionOS)
 
