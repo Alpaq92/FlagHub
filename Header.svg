@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Header.svg
+  Source: FlagHub - fork of FlagKit by Bowtie
+  License: MIT
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1720 616" width="1720" height="616">
+    <title>FlagHub 3.0</title>
+    <desc>Title banner for the FlagHub fork. Vector source for Header.png.</desc>
+
+    <text x="860" y="240" font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="110" fill="#1A1A1A" text-anchor="middle" letter-spacing="-1">
+        <tspan font-weight="700">FlagHub</tspan><tspan font-weight="300"> 3.0</tspan>
+    </text>
+
+    <image xlink:href="Assets/SVG/BE.svg"  x="540"  y="340" width="170" height="121"/>
+    <image xlink:href="Assets/SVG/PA.svg"  x="775"  y="340" width="170" height="121"/>
+    <image xlink:href="Assets/SVG/JP.svg"  x="1010" y="340" width="170" height="121"/>
+
+    <g transform="translate(593 480)">
+        <clipPath id="Header_BE_rounded"><rect width="36" height="26" rx="3"/></clipPath>
+        <g clip-path="url(#Header_BE_rounded)">
+            <image xlink:href="Assets/SVG/BE.svg" width="36" height="26"/>
+        </g>
+        <clipPath id="Header_BE_square"><rect x="48" width="26" height="26"/></clipPath>
+        <g clip-path="url(#Header_BE_square)">
+            <image xlink:href="Assets/SVG/BE.svg" x="40" width="42" height="26"/>
+        </g>
+    </g>
+    <g transform="translate(828 480)">
+        <clipPath id="Header_PA_rounded"><rect width="36" height="26" rx="3"/></clipPath>
+        <g clip-path="url(#Header_PA_rounded)">
+            <image xlink:href="Assets/SVG/PA.svg" width="36" height="26"/>
+        </g>
+        <clipPath id="Header_PA_square"><rect x="48" width="26" height="26"/></clipPath>
+        <g clip-path="url(#Header_PA_square)">
+            <image xlink:href="Assets/SVG/PA.svg" x="40" width="42" height="26"/>
+        </g>
+    </g>
+    <g transform="translate(1063 480)">
+        <clipPath id="Header_JP_rounded"><rect width="36" height="26" rx="3"/></clipPath>
+        <g clip-path="url(#Header_JP_rounded)">
+            <image xlink:href="Assets/SVG/JP.svg" width="36" height="26"/>
+        </g>
+        <clipPath id="Header_JP_square"><rect x="48" width="26" height="26"/></clipPath>
+        <g clip-path="url(#Header_JP_square)">
+            <image xlink:href="Assets/SVG/JP.svg" x="40" width="42" height="26"/>
+        </g>
+    </g>
+</svg>
