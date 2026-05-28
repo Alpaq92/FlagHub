@@ -9,14 +9,15 @@ The deep dive. The [README](../README.md) is the elevator pitch; everything else
 3. [Upstream issues resolved](#upstream-issues-resolved)
 4. [What was not done, and why](#what-was-not-done-and-why)
 5. [PNG optimization](#png-optimization)
-6. [Installation](#installation)
-7. [Usage](#usage)
-8. [Project layout](#project-layout)
-9. [Helper scripts](#helper-scripts)
-10. [GitHub automation](#github-automation)
-11. [Changelog](#changelog)
-12. [Maintenance notes](#maintenance-notes)
-13. [License](#license)
+6. [Icon](#icon)
+7. [Installation](#installation)
+8. [Usage](#usage)
+9. [Project layout](#project-layout)
+10. [Helper scripts](#helper-scripts)
+11. [GitHub automation](#github-automation)
+12. [Changelog](#changelog)
+13. [Maintenance notes](#maintenance-notes)
+14. [License](#license)
 
 ---
 
@@ -142,7 +143,33 @@ Every raster asset in the repo was losslessly recompressed. The upstream PNGs we
 | `header.png` | 1 | 100 KiB | 71 KiB | 29 % |
 | **Total** | **1,281** | **2,356 KiB** | **1,373 KiB** | **41.7 %** |
 
-`icon.png` (≈220 KiB after oxipng) was added later in the project lifecycle and isn't included in the totals above; it's regenerated via `scripts/generate_icon.py` rather than hand-edited, and the optimiser picks it up automatically on subsequent runs.
+`icon.png` (≈300 KiB after oxipng) was added later in the project lifecycle and isn't included in the totals above; it's regenerated via `scripts/generate_icon.py` rather than hand-edited, and the optimiser picks it up automatically on subsequent runs. See [Icon](#icon) for what it depicts and how to regenerate.
+
+---
+
+## Icon
+
+`icon.png` at the repo root is the package's visual identity — useful in READMEs, presentations, app stores, or anywhere else you want a FlagHub avatar. It is **not** one of the country flags: those live under `Assets/` and `Sources/FlagHub/FlagHub.xcassets/` and are unrelated to this asset.
+
+![icon.png](../icon.png)
+
+Composition (1024 × 1024, RGBA, transparent outside the disc):
+
+- **Plate** — round, white at the top fading to a faint cool grey at the bottom. Subtle glass treatments give it volume rather than reading as a flat shape: a soft top meniscus arc, a top-left edge-refraction highlight, and a bottom-right inner shadow.
+- **Globe** — the royal-blue wireframe globe glyph from [icones.pro/en/blue-globe-icon-png-symbol/](https://icones.pro/en/blue-globe-icon-png-symbol/), licensed per [icones.pro/en/icon-license/](https://icones.pro/en/icon-license/). The source PNG is committed at `scripts/globe_source.png` so the build is reproducible without a network fetch.
+- **Depth** — a soft drop shadow under the wireframe makes it appear to float above the plate. The strokes themselves are recoloured from solid blue to a top-to-bottom royal-blue → navy gradient, suggesting light falling on a sphere.
+
+### Regenerating
+
+```sh
+pip install Pillow numpy pyoxipng
+python scripts/generate_icon.py
+python -c "import oxipng; oxipng.optimize('icon.png', level=6)"
+```
+
+`scripts/generate_icon.py` renders at 4× supersample (4096 × 4096) and downsamples with LANCZOS for clean anti-aliasing on the disc and stroked paths. All composition parameters — palette, sheen alpha, edge-refraction strength, drop-shadow blur, plate/globe radius ratio — are constants at the top of the file; tweak there if you want to iterate without unpicking the compositor.
+
+---
 
 To re-run after editing PNG assets:
 
@@ -305,7 +332,7 @@ Python utilities in `scripts/`, all idempotent — running them on a clean tree 
 | `scripts/scope_svg_ids.py` | Prefixes every `id="X"` in each SVG with the country code (e.g. `id="linearGradient-1"` → `id="AR_linearGradient-1"`), and rewrites every `url(#X)`, `href="#X"`, and `xlink:href="#X"` reference to match. Fixes [#66](https://github.com/madebybowtie/FlagKit/issues/66) where the same gradient id could resolve to a different flag when both were inlined in the same DOM |
 | `scripts/add_svg_attribution.py` | Prepends a standard MIT attribution comment to every SVG: source = FlagHub (fork of FlagKit by Bowtie), upstream URL, license = MIT. Country name pulled from `Assets/Flags.md`. Fixes [#106](https://github.com/madebybowtie/FlagKit/issues/106) |
 | `scripts/optimize_pngs.py` | Losslessly recompresses every PNG in the repo with `oxipng -o 6`. Requires `pip install pyoxipng`. See [PNG optimization](#png-optimization) for tool-choice rationale |
-| `scripts/generate_icon.py` | Renders `icon.png` at repo root: the royal-blue wireframe globe glyph from `scripts/globe_source.png` (source: icones.pro, licensed per [icones.pro/en/icon-license/](https://icones.pro/en/icon-license/)) composited onto a white-to-cool-grey round gradient plate with subtle glass treatments (top sheen, edge refraction, soft inner shadow) and a drop shadow + vertical sphere-lighting gradient on the globe itself. Rendered at 4× supersample (4096×4096), downsampled with LANCZOS. Requires Pillow + numpy |
+| `scripts/generate_icon.py` | Renders `icon.png` at repo root. See [Icon](#icon) for the design rationale, source attribution, and tweakable parameters. Requires Pillow + numpy |
 
 Re-run after asset edits:
 
