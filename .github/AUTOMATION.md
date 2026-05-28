@@ -111,9 +111,22 @@ A PR is auto-merged only when **all** of these hold:
 2. **Approval** — one of:
    - PR author is `dependabot[bot]` (the bot is the author-of-trust; no separate human review needed for routine dependency bumps), OR
    - at least one **APPROVED** review whose author is in `.github/CODEOWNERS`, a repo collaborator, or `coderabbitai[bot]`
-3. The eligible **approval is ≥ 7 days old** (measured from the latest qualifying `APPROVED` review's `submitted_at`). For Dependabot PRs the timer effectively starts at PR creation since there is no separate approval moment
+3. **Soak window**:
+   - Dependabot-authored PRs: **none** — merge as soon as everything else is green
+   - All other PRs: the eligible approval is ≥ 7 days old (measured from the latest qualifying `APPROVED` review's `submitted_at`)
 4. No open **CHANGES_REQUESTED** review (latest-per-reviewer wins) — this still blocks Dependabot PRs if someone explicitly requests changes
 5. Every check run on the head SHA has `conclusion = success` (no failure, cancelled, timed-out, or pending)
 6. PR is mergeable (no conflicts)
 
 Merge strategy is **squash**.
+
+### When evaluation happens
+
+The workflow re-evaluates the eligible PR set on each of:
+
+- The scheduled tick (every 6 hours at xx:23 UTC)
+- Any `pull_request_review` submission
+- Any `workflow_run.completed` event from the `CI`, `Build & Release`, `CodeQL`, or `Security` workflows
+- `workflow_dispatch` (optionally with a `pr_number` input to evaluate a specific PR)
+
+The `workflow_run` triggers are what give Dependabot PRs their "merge within minutes of CI green" behaviour without polling.

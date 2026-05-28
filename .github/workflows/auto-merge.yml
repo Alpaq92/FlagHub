@@ -17,6 +17,12 @@ on:
     - cron: '23 */6 * * *'   # every 6 hours at xx:23
   pull_request_review:
     types: [submitted]
+  workflow_run:
+    # Re-evaluate as soon as one of the gating workflows finishes, so
+    # Dependabot PRs that pass CI can be merged within minutes instead of
+    # waiting up to 6 hours for the next scheduled tick.
+    workflows: [CI, Build & Release, CodeQL, Security]
+    types: [completed]
   workflow_dispatch:
     inputs:
       pr_number:
@@ -137,8 +143,12 @@ jobs:
                 let approvalTime = null;  // ms-since-epoch of the trust point
 
                 if (isDependabot) {
-                  eligibleApprover = 'dependabot[bot] (author-trusted)';
-                  approvalTime = new Date(pr.created_at).getTime();
+                  eligibleApprover = 'dependabot[bot] (author-trusted, no soak)';
+                  // Dependabot PRs skip the 7-day soak entirely - merge as
+                  // soon as CI is green. Routine dependency bumps don't
+                  // benefit from sitting around, and Dependabot itself
+                  // re-opens superseded PRs if the upstream package gets a
+                  // newer release in the meantime.
                 } else {
                   if (approvers.length === 0) {
                     core.info('Skip: no APPROVED reviews');
@@ -163,17 +173,16 @@ jobs:
                     core.info(`Skip: approvals (${approvers.map(r => r.user.login).join(', ')}) are not code-owner, collaborator, or CodeRabbit`);
                     continue;
                   }
-                }
 
-                // 7-day soak: measured from approval time (not PR creation)
-                // so a stale PR that just got its approval doesn't merge
-                // instantly. For Dependabot PRs the timer effectively measures
-                // from creation, since there is no separate approval moment.
-                const ageSinceApproval = Date.now() - approvalTime;
-                if (ageSinceApproval < ONE_WEEK_MS) {
-                  const daysLeft = ((ONE_WEEK_MS - ageSinceApproval) / (24 * 3600 * 1000)).toFixed(1);
-                  core.info(`Skip: ${daysLeft} day(s) left in 7-day soak window from approval by ${eligibleApprover}`);
-                  continue;
+                  // 7-day soak: measured from approval time (not PR creation)
+                  // so a stale PR that just got its approval doesn't merge
+                  // instantly. Dependabot PRs skip this entirely.
+                  const ageSinceApproval = Date.now() - approvalTime;
+                  if (ageSinceApproval < ONE_WEEK_MS) {
+                    const daysLeft = ((ONE_WEEK_MS - ageSinceApproval) / (24 * 3600 * 1000)).toFixed(1);
+                    core.info(`Skip: ${daysLeft} day(s) left in 7-day soak window from approval by ${eligibleApprover}`);
+                    continue;
+                  }
                 }
 
                 const { data: checks } = await github.rest.checks.listForRef({
