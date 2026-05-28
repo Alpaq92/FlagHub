@@ -1,4 +1,7 @@
-![Header](header.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="header-dark.png">
+  <img alt="FlagHub 3.0" src="header.png">
+</picture>
 
 # FlagHub
 
@@ -9,7 +12,6 @@
 
 [![Latest release](https://img.shields.io/github/v/release/Alpaq92/FlagHub?label=release&sort=semver)](https://github.com/Alpaq92/FlagHub/releases/latest)
 [![GitHub release downloads](https://img.shields.io/github/downloads/Alpaq92/FlagHub/total?label=GitHub%20downloads&color=blue)](https://github.com/Alpaq92/FlagHub/releases)
-[![CocoaPods downloads](https://img.shields.io/cocoapods/dt/FlagKit?label=CocoaPods%20downloads&color=blue)](https://cocoapods.org/pods/FlagKit)
 [![SwiftPM compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen)](https://github.com/Carthage/Carthage)
 [![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey)](Package.swift)
