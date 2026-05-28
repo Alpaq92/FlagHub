@@ -1,3 +1,12 @@
+<!--
+  Dual-mode header. Renderers that honour <picture> with prefers-color-scheme
+  (GitHub.com, modern browsers) pick the variant matching the viewer's theme.
+  Renderers that don't (most local Markdown previewers) fall back to header.png,
+  which shows dark text on transparent - readable on light backgrounds, but
+  invisible in dark-mode previewers. This is a known limitation of static
+  raster headers; the canonical render context (GitHub.com) is the primary
+  target.
+-->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="header-dark.png">
   <img alt="FlagHub 3.0" src="header.png">
