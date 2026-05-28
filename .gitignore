@@ -1,5 +1,6 @@
+# ----------------------------------------------------------------------------
 # Xcode
-#
+# ----------------------------------------------------------------------------
 build/
 *.pbxuser
 !default.pbxuser
@@ -9,32 +10,81 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
+xcuserdata/
 *.xccheckout
 *.moved-aside
-DerivedData
+DerivedData/
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcworkspace/xcuserdata/
 
+# ----------------------------------------------------------------------------
+# Swift Package Manager
+# ----------------------------------------------------------------------------
+.swiftpm/
+.build/
+Package.resolved
+
+# ----------------------------------------------------------------------------
 # CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-#
+# We recommend against adding the Pods directory to your .gitignore. See:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+# ----------------------------------------------------------------------------
 # Pods/
 
+# ----------------------------------------------------------------------------
 # Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# ----------------------------------------------------------------------------
 # Carthage/Checkouts
+Carthage/Build/
 
-Carthage/Build
+# ----------------------------------------------------------------------------
+# Python (scripts/ tooling)
+# ----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-version
 
-# SPM
-.swiftpm
-.build/
-
-# macOS specific
+# ----------------------------------------------------------------------------
+# macOS
+# ----------------------------------------------------------------------------
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ----------------------------------------------------------------------------
+# Windows
+# ----------------------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ----------------------------------------------------------------------------
+# Linux
+# ----------------------------------------------------------------------------
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ----------------------------------------------------------------------------
+# Editors / IDEs
+# ----------------------------------------------------------------------------
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
