@@ -2,12 +2,16 @@
 
 # FlagHub
 
+<div align="center">
+
 [![Latest release](https://img.shields.io/github/v/release/Alpaq92/FlagHub?label=release&sort=semver)](https://github.com/Alpaq92/FlagHub/releases/latest)
 [![GitHub release downloads](https://img.shields.io/github/downloads/Alpaq92/FlagHub/total?label=GitHub%20downloads&color=blue)](https://github.com/Alpaq92/FlagHub/releases)
 [![SwiftPM compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen)](https://github.com/Carthage/Carthage)
 [![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey)](Package.swift)
 [![License](https://img.shields.io/github/license/Alpaq92/FlagHub?color=blue)](LICENSE)
+
+</div>
 
 Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) — every open upstream PR merged, packaging issues fixed, two Swift API conveniences added. The flag artwork is identical to upstream.
 
