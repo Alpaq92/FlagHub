@@ -6,6 +6,8 @@ Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github
 
 **256 flags. iOS · macOS · tvOS · visionOS.**
 
+For a detailed overview of this project's state, see [docs/OVERVIEW.md](docs/OVERVIEW.md).
+
 ## Install
 
 Swift Package Manager:
@@ -14,7 +16,7 @@ Swift Package Manager:
 .package(url: "https://github.com/<owner>/FlagHub.git", branch: "main")
 ```
 
-Or CocoaPods / Carthage / drop `Sources/FlagKit/FlagKit.xcassets` into your target — see [docs/OVERVIEW.md](docs/OVERVIEW.md#installation).
+Or CocoaPods / Carthage / drop `Sources/FlagKit/FlagKit.xcassets` into your target.
 
 ## Use
 
