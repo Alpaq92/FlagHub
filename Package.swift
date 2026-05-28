@@ -8,7 +8,7 @@ let package = Package(
     platforms: [
         .iOS(.v12),
         .tvOS(.v12),
-        .macOS(.v10_12)
+        .macOS(.v10_13)
     ],
     products: [
         .library(name: "FlagHub", targets: ["FlagHub"]),
@@ -21,6 +21,9 @@ let package = Package(
             exclude: [
                 "Info.plist",
                 "FlagHubFramework.xcconfig"
+            ],
+            resources: [
+                .process("FlagHub.xcassets")
             ]
         ),
         .testTarget(
@@ -30,6 +33,9 @@ let package = Package(
                 "Info.plist",
                 "FlagHubTests.xcconfig",
                 "ObjectiveCTests.m"
+            ],
+            resources: [
+                .process("Fixtures.xcassets")
             ]
         )
     ]
