@@ -108,10 +108,10 @@ Anyone with merge permission on the branch can merge manually via the GitHub PR 
 A PR is auto-merged only when **all** of these hold:
 
 1. Not a draft
-2. Created ≥ 7 days ago
-3. **Approval** — one of:
+2. **Approval** — one of:
    - PR author is `dependabot[bot]` (the bot is the author-of-trust; no separate human review needed for routine dependency bumps), OR
    - at least one **APPROVED** review whose author is in `.github/CODEOWNERS`, a repo collaborator, or `coderabbitai[bot]`
+3. The eligible **approval is ≥ 7 days old** (measured from the latest qualifying `APPROVED` review's `submitted_at`). For Dependabot PRs the timer effectively starts at PR creation since there is no separate approval moment
 4. No open **CHANGES_REQUESTED** review (latest-per-reviewer wins) — this still blocks Dependabot PRs if someone explicitly requests changes
 5. Every check run on the head SHA has `conclusion = success` (no failure, cancelled, timed-out, or pending)
 6. PR is mergeable (no conflicts)

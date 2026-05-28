@@ -109,13 +109,6 @@ jobs:
               try {
                 if (pr.draft) { core.info('Skip: draft'); continue; }
 
-                const age = Date.now() - new Date(pr.created_at).getTime();
-                if (age < ONE_WEEK_MS) {
-                  const daysLeft = ((ONE_WEEK_MS - age) / (24 * 3600 * 1000)).toFixed(1);
-                  core.info(`Skip: too young (${daysLeft} day(s) left until eligible)`);
-                  continue;
-                }
-
                 const { data: reviews } = await github.rest.pulls.listReviews({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -138,27 +131,49 @@ jobs:
 
                 // Dependabot's own PRs are treated as pre-approved by the bot
                 // itself - we trust the @dependabot author for its dependency
-                // updates. The 7-day age requirement still applies as a soak
-                // window, and CHANGES_REQUESTED above can still block.
+                // updates. CHANGES_REQUESTED above can still block.
                 const isDependabot = pr.user?.login === 'dependabot[bot]';
                 let eligibleApprover = null;
+                let approvalTime = null;  // ms-since-epoch of the trust point
+
                 if (isDependabot) {
                   eligibleApprover = 'dependabot[bot] (author-trusted)';
+                  approvalTime = new Date(pr.created_at).getTime();
                 } else {
                   if (approvers.length === 0) {
                     core.info('Skip: no APPROVED reviews');
                     continue;
                   }
+                  // Find the latest APPROVED review submitted by an eligible
+                  // reviewer (code-owner / collaborator / CodeRabbit). Use
+                  // that review's submitted_at as the 7-day clock origin.
                   for (const r of approvers) {
                     const login = r.user.login;
-                    if (APPROVER_BOTS.has(login)) { eligibleApprover = login; break; }
-                    if (ownersList.includes(login)) { eligibleApprover = login; break; }
-                    if (await isCollaborator(login)) { eligibleApprover = login; break; }
+                    const isEligible = APPROVER_BOTS.has(login)
+                      || ownersList.includes(login)
+                      || await isCollaborator(login);
+                    if (!isEligible) continue;
+                    const t = new Date(r.submitted_at).getTime();
+                    if (approvalTime === null || t > approvalTime) {
+                      approvalTime = t;
+                      eligibleApprover = login;
+                    }
                   }
                   if (!eligibleApprover) {
                     core.info(`Skip: approvals (${approvers.map(r => r.user.login).join(', ')}) are not code-owner, collaborator, or CodeRabbit`);
                     continue;
                   }
+                }
+
+                // 7-day soak: measured from approval time (not PR creation)
+                // so a stale PR that just got its approval doesn't merge
+                // instantly. For Dependabot PRs the timer effectively measures
+                // from creation, since there is no separate approval moment.
+                const ageSinceApproval = Date.now() - approvalTime;
+                if (ageSinceApproval < ONE_WEEK_MS) {
+                  const daysLeft = ((ONE_WEEK_MS - ageSinceApproval) / (24 * 3600 * 1000)).toFixed(1);
+                  core.info(`Skip: ${daysLeft} day(s) left in 7-day soak window from approval by ${eligibleApprover}`);
+                  continue;
                 }
 
                 const { data: checks } = await github.rest.checks.listForRef({
