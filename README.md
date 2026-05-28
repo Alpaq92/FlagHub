@@ -2,6 +2,19 @@
 
 # FlagHub
 
+[![CI](https://github.com/Alpaq92/FlagHub/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Alpaq92/FlagHub/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/codeql.yml)
+[![Security](https://github.com/Alpaq92/FlagHub/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/security.yml)
+[![Release](https://github.com/Alpaq92/FlagHub/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/release.yml)
+
+[![Latest release](https://img.shields.io/github/v/release/Alpaq92/FlagHub?label=release&sort=semver)](https://github.com/Alpaq92/FlagHub/releases/latest)
+[![GitHub release downloads](https://img.shields.io/github/downloads/Alpaq92/FlagHub/total?label=GitHub%20downloads&color=blue)](https://github.com/Alpaq92/FlagHub/releases)
+[![CocoaPods downloads](https://img.shields.io/cocoapods/dt/FlagKit?label=CocoaPods%20downloads&color=blue)](https://cocoapods.org/pods/FlagKit)
+[![SwiftPM compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen)](https://github.com/Carthage/Carthage)
+[![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey)](Package.swift)
+[![License](https://img.shields.io/github/license/Alpaq92/FlagHub?color=blue)](LICENSE)
+
 Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) — every open upstream PR merged, packaging issues fixed, two Swift API conveniences added. The flag artwork is identical to upstream.
 
 **256 flags. iOS · macOS · tvOS · visionOS.**
@@ -13,7 +26,7 @@ For a detailed overview of this project's state, see [docs/OVERVIEW.md](docs/OVE
 Swift Package Manager:
 
 ```swift
-.package(url: "https://github.com/<owner>/FlagHub.git", branch: "main")
+.package(url: "https://github.com/Alpaq92/FlagHub.git", branch: "main")
 ```
 
 Or CocoaPods / Carthage / drop `Sources/FlagKit/FlagKit.xcassets` into your target.
@@ -43,9 +56,14 @@ Image(flagWithCountryCode: "PL")?
 ## Docs
 
 - [**docs/OVERVIEW.md**](docs/OVERVIEW.md) — deep dive: install details, full Swift / SwiftUI usage, project layout, helper scripts, automation, maintenance
+- [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog log of merged PRs; `[Unreleased]` is auto-populated by the changelog workflow
 - [FORK.md](FORK.md) — every commit grouped by upstream PR / issue, plus what was attempted and reverted
 - [.github/README.md](.github/README.md) — CI / CodeQL / auto-merge / release pipeline
 
+## How it was built
+
+This fork was developed with **audit-based AI assistance** — an AI agent proposed each change, but every edit was reviewed against the upstream codebase, the project's intent, and visible inline previews before being committed. The audit trail is in the commit log and the `Polish` / `Revert` commits show where AI-generated content was reviewed, deemed below quality, and rolled back to upstream artwork. No artwork in this branch is AI-generated; the code additions (`Flag.all`, `Image(flag:)`) are reviewed line-by-line in `Sources/FlagKit/FlagCodes.swift` and `Sources/FlagKit/SwiftUI.swift`.
+
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Original copyright Bowtie AB (2016); fork copyright Alpaq92 (2026).
