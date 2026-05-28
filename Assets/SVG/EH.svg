@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Flag: EH - Western Sahara
+  Source: FlagKit by Bowtie (https://github.com/madebybowtie/FlagKit)
+  License: MIT
+-->
+<svg width="21px" height="15px" viewBox="0 0 21 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>EH</title>
+    <desc>Flag of the Sahrawi Arab Democratic Republic.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="EH_linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="EH_linearGradient-2">
+            <stop stop-color="#1A1A1A" offset="0%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="EH_linearGradient-3">
+            <stop stop-color="#108B4F" offset="0%"></stop>
+            <stop stop-color="#0A7A40" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="EH_linearGradient-4">
+            <stop stop-color="#E6132B" offset="0%"></stop>
+            <stop stop-color="#C8001E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="EH_Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="EH_EH">
+            <rect id="EH_FlagBackground" fill="url(#EH_linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
+            <rect id="EH_Top" fill="url(#EH_linearGradient-2)" x="0" y="0" width="21" height="5"></rect>
+            <rect id="EH_Bottom" fill="url(#EH_linearGradient-3)" x="0" y="10" width="21" height="5"></rect>
+            <polygon id="EH_Triangle" fill="url(#EH_linearGradient-4)" points="0,0 0,15 7,7.5"></polygon>
+            <path id="EH_Crescent" d="M 13.81,6.238 A 1.5,1.5 0 1 0 13.81,8.762 A 1.3,1.3 0 1 1 13.81,6.238 Z" fill="url(#EH_linearGradient-4)"></path>
+            <polygon id="EH_Star" points="14.5000,7.0000 14.6120,7.3460 14.9760,7.3450 14.6820,7.5590 14.7940,7.9050 14.5000,7.6910 14.2060,7.9050 14.3180,7.5590 14.0240,7.3450 14.3880,7.3460" fill="url(#EH_linearGradient-4)"></polygon>
+        </g>
+    </g>
+</svg>
