@@ -41,7 +41,7 @@ SHADOW_TINT = (60, 80, 110)
 
 # Plate radius (fraction of canvas) and globe size (fraction of plate).
 PLATE_RADIUS_FRAC = 0.49
-GLOBE_SIZE_FRAC = 0.62          # globe glyph occupies 62% of plate diameter
+GLOBE_SIZE_FRAC = 0.78          # globe glyph occupies 78% of plate diameter
 
 
 # --------------------------------------------------------------------------
@@ -146,13 +146,51 @@ def build_icon() -> Image.Image:
     shadow_out = shadow_out.filter(ImageFilter.GaussianBlur(radius=max(1, S // 350)))
     base = Image.alpha_composite(base, shadow_out)
 
-    # 5. Globe glyph — icones.pro royal-blue wireframe, centred on plate.
+    # 5. Globe glyph with depth treatment so it doesn't read as a flat
+    # sticker against the glossy plate:
+    #   a) a soft dark drop-shadow behind the glyph (offset down-right)
+    #      makes it appear to float above the plate;
+    #   b) the wireframe strokes are recoloured with a vertical blue
+    #      gradient (brighter royal blue at top, deeper navy at bottom)
+    #      to imply light falling on a sphere.
     glyph_size = int(plate_radius * 2 * GLOBE_SIZE_FRAC)
     glyph = load_globe(glyph_size)
     gx = (S - glyph_size) // 2
     gy = (S - glyph_size) // 2
+    _, _, _, glyph_alpha = glyph.split()
+
+    # 5a. Drop shadow. CRITICAL: paste the source onto the full S×S
+    # canvas *before* blurring, otherwise the gaussian gets clipped by
+    # the glyph_size bounding box and leaves visible rectangular edges
+    # around the shadow.
+    shadow_color = (15, 30, 75)
+    shadow_fill = Image.new("RGBA", (glyph_size, glyph_size), (*shadow_color, 255))
+    shadow_src = Image.new("RGBA", (glyph_size, glyph_size), 0)
+    shadow_src.paste(shadow_fill, (0, 0), glyph_alpha)
+    sh_arr = np.array(shadow_src)
+    sh_arr[:, :, 3] = (sh_arr[:, :, 3].astype(np.float32) * 0.45).astype(np.uint8)
+    shadow_src = Image.fromarray(sh_arr, "RGBA")
+
+    shadow_canvas = Image.new("RGBA", (S, S), 0)
+    shadow_canvas.paste(
+        shadow_src,
+        (gx + int(S * 0.004), gy + int(S * 0.012)),
+        shadow_src,
+    )
+    shadow_canvas = shadow_canvas.filter(
+        ImageFilter.GaussianBlur(radius=glyph_size // 22)
+    )
+    base = Image.alpha_composite(base, shadow_canvas)
+
+    # 5b. Recolour the wireframe with a vertical gradient.
+    GLOBE_TOP = (52, 70, 245)       # bright royal blue
+    GLOBE_BOT = (10, 18, 130)       # deep navy
+    grad = vertical_gradient_rgba(glyph_size, GLOBE_TOP, GLOBE_BOT, 255)
+    recoloured = Image.new("RGBA", (glyph_size, glyph_size), 0)
+    recoloured.paste(grad, (0, 0), glyph_alpha)
+
     glyph_canvas = Image.new("RGBA", (S, S), 0)
-    glyph_canvas.paste(glyph, (gx, gy), glyph)
+    glyph_canvas.paste(recoloured, (gx, gy), recoloured)
     base = Image.alpha_composite(base, glyph_canvas)
 
     return base

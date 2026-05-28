@@ -58,7 +58,7 @@ flowchart TD
 | `.github/workflows/security.yml` | gitleaks (secret detection), `dependency-review-action` (PR only), Trivy filesystem scan to SARIF |
 | `.github/workflows/auto-merge.yml` | Polls open PRs every 6 h (and on each review / gating-workflow completion) and squash-merges any that meet all eligibility criteria |
 | `.github/workflows/changelog.yml` | On every PR merged into `main`, prepends a bullet under `## [Unreleased]` in `CHANGELOG.md`. Commits as `github-actions[bot]` with `[skip ci]` |
-| `.github/workflows/release.yml` | Builds + tests on every push to main, packages a tarball + xcframework, publishes a GitHub Release on `v*.*.*` tags |
+| `.github/workflows/release.yml` | Builds + tests on every push to main, packages a tarball + xcframework, publishes a GitHub Release on `v*.*.*` tags. The xcframework is produced by [`segment-integrations/swift-create-xcframework`](https://github.com/segment-integrations/swift-create-xcframework) (pinned to commit `33079d3`); a post-build step injects `FlagHub_FlagHub.bundle` (the SPM resource target) into each framework slice so the binary distribution has working flag artwork |
 | `.github/workflows/sync-upstream.yml` | Daily cron (02:17 UTC) that fetches `madebybowtie/FlagKit` master, opens or refreshes a `sync/upstream-flagkit` PR when we're behind. Opens a conflict-labelled issue if the merge can't auto-resolve |
 | `.github/dependabot.yml` | Weekly version-update PRs for the `github-actions` and `swift` ecosystems, Mondays 06:00 UTC, conventional-commits prefixes (`ci:`, `build:`) |
 

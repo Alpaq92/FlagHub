@@ -10,6 +10,9 @@ Entries under `[Unreleased]` are appended automatically by `.github/workflows/ch
 
 <!-- Auto-generated entries are inserted directly below this line by the changelog workflow. Do not delete the heading or the comment - the workflow looks for them. -->
 
+### Added
+- `icon.png` at repo root — a royal-blue wireframe globe (from icones.pro, [license](https://icones.pro/en/icon-license/)) on a white-to-cool-grey round gradient plate with subtle glass treatments and a drop-shadow + sphere-lighting gradient on the glyph. Regeneration script: `scripts/generate_icon.py`.
+
 ## [3.0.3] - 2026-05-28
 
 ### Fixed
