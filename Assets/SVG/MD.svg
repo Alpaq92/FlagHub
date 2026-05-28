@@ -42,11 +42,23 @@
                 <use fill="url(#MD_linearGradient-4)" fill-rule="evenodd" xlink:href="#MD_path-5"></use>
             </g>
             <g id="MD_CoatOfArms">
-                <path d="M9,5.5 L12,5.5 L12,8.5 Q12,10.5 10.5,11 Q9,10.5 9,8.5 Z" fill="url(#MD_linearGradient-4)" stroke="#8C5E2A" stroke-width="0.15"></path>
-                <path d="M9.6,6.6 Q9.3,5.9 9.7,5.8 Q9.9,6 9.9,6.5 Z M11.4,6.6 Q11.7,5.9 11.3,5.8 Q11.1,6 11.1,6.5 Z" fill="#5A3E20"></path>
-                <ellipse cx="10.5" cy="7.3" rx="0.85" ry="0.7" fill="#5A3E20"></ellipse>
-                <ellipse cx="10.5" cy="8.15" rx="0.4" ry="0.3" fill="#5A3E20"></ellipse>
-                <polygon points="10.5,3.7 10.7,4.3 11.3,4.3 10.8,4.65 11,5.25 10.5,4.9 10,5.25 10.2,4.65 9.7,4.3 10.3,4.3" fill="url(#MD_linearGradient-4)"></polygon>
+                <path d="M 9.3,5.7 L 7.8,5.4 L 7.2,5.7 L 7.0,6.4 L 7.4,6.7 L 7.0,7.2 L 7.5,7.5 L 7.1,8.0 L 7.7,8.3 L 8.3,8.0 L 8.7,8.5 L 9.2,8.2 L 9.3,7.0 Z" fill="url(#MD_linearGradient-4)"></path>
+                <path d="M 11.7,5.7 L 13.2,5.4 L 13.8,5.7 L 14.0,6.4 L 13.6,6.7 L 14.0,7.2 L 13.5,7.5 L 13.9,8.0 L 13.3,8.3 L 12.7,8.0 L 12.3,8.5 L 11.8,8.2 L 11.7,7.0 Z" fill="url(#MD_linearGradient-4)"></path>
+                <circle cx="10.5" cy="4.55" r="0.42" fill="url(#MD_linearGradient-4)"></circle>
+                <polygon points="10.35,4.7 10.65,4.7 10.5,5.1" fill="url(#MD_linearGradient-4)"></polygon>
+                <rect x="10.4" y="3.3" width="0.2" height="0.85" fill="url(#MD_linearGradient-4)"></rect>
+                <rect x="10.15" y="3.55" width="0.7" height="0.15" fill="url(#MD_linearGradient-4)"></rect>
+                <path d="M 9.3,5.5 L 11.7,5.5 L 11.7,7.5 L 9.3,7.5 Z" fill="url(#MD_linearGradient-2)" stroke="#5A3E20" stroke-width="0.08"></path>
+                <path d="M 9.3,7.5 L 11.7,7.5 L 11.7,9.0 Q 11.7,10.0 10.5,10.4 Q 9.3,10.0 9.3,9.0 Z" fill="url(#MD_linearGradient-3)" stroke="#5A3E20" stroke-width="0.08"></path>
+                <path d="M 9.85,7.05 Q 9.45,6.45 9.6,6.05 Q 9.9,6.45 9.95,6.9 Z" fill="url(#MD_linearGradient-4)"></path>
+                <path d="M 11.15,7.05 Q 11.55,6.45 11.4,6.05 Q 11.1,6.45 11.05,6.9 Z" fill="url(#MD_linearGradient-4)"></path>
+                <ellipse cx="10.5" cy="7.5" rx="0.65" ry="0.55" fill="url(#MD_linearGradient-4)"></ellipse>
+                <ellipse cx="10.5" cy="7.95" rx="0.28" ry="0.2" fill="url(#MD_linearGradient-4)"></ellipse>
+                <circle cx="10.3" cy="7.45" r="0.06" fill="#5A3E20"></circle>
+                <circle cx="10.7" cy="7.45" r="0.06" fill="#5A3E20"></circle>
+                <polygon points="10.5,6.15 10.56,6.34 10.73,6.34 10.59,6.45 10.65,6.62 10.5,6.51 10.35,6.62 10.41,6.45 10.27,6.34 10.44,6.34" fill="url(#MD_linearGradient-4)"></polygon>
+                <path d="M 9.5,8.4 A 0.18,0.18 0 1 0 9.5,8.75 A 0.12,0.18 0 1 1 9.5,8.4 Z" fill="url(#MD_linearGradient-1)"></path>
+                <circle cx="11.5" cy="8.575" r="0.14" fill="url(#MD_linearGradient-4)"></circle>
             </g>
         </g>
     </g>
