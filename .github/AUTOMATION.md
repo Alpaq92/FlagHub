@@ -4,36 +4,40 @@ This directory configures the GitHub-side workflow for FlagHub: PR reviews, secu
 
 ## Overview
 
-```text
-                     ┌─────────────────────────────────────────────┐
-PR opened  ─────▶    │ CodeRabbit auto-reviews   (.coderabbit.yaml)│
-                     │ ci.yml         build + test                 │
-                     │ codeql.yml     Swift CodeQL                 │
-                     │ security.yml   gitleaks + deps + trivy      │
-                     └─────────────────────────────────────────────┘
-                                       │
-                       review by code owner / collaborator
-                                  / coderabbitai
-                                       │
-                              wait 7 days from PR open
-                                       │
-                                       ▼
-                     ┌─────────────────────────────────────────────┐
-                     │ auto-merge.yml (runs every 6h + on review)  │
-                     │   - all checks green                        │
-                     │   - no CHANGES_REQUESTED                    │
-                     │   - mergeable                               │
-                     │   ⇒  squash-merge into main                 │
-                     └─────────────────────────────────────────────┘
-                                       │
-                                       ▼
-                     ┌─────────────────────────────────────────────┐
-                     │ release.yml on push to main                 │
-                     │   - SPM build + test                        │
-                     │   - xcframework for iOS/macOS/tvOS          │
-                     │   - tarball uploaded as workflow artefact   │
-                     │   - on v*.*.* tag: GitHub Release published │
-                     └─────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    PR([PR opened]):::start
+
+    PR --> CR[CodeRabbit auto-review<br/><code>.coderabbit.yaml</code>]:::review
+    PR --> CI[CI<br/><code>swift build · test · podspec lint</code>]:::check
+    PR --> CQ[CodeQL<br/><code>Swift security-and-quality</code>]:::check
+    PR --> SEC[Security<br/><code>gitleaks · deps · Trivy</code>]:::check
+
+    CR --> GATE
+    CI --> GATE
+    CQ --> GATE
+    SEC --> GATE
+
+    GATE{Approved by CODEOWNER /<br/>collaborator / coderabbitai?<br/>All checks green?<br/>7 days elapsed?}:::gate
+
+    GATE -->|yes| MERGE[auto-merge.yml<br/>squash → main]:::merge
+    GATE -.bypass.-> MANUAL[Manual merge via PR UI]:::bypass
+    MANUAL --> MERGE
+
+    MERGE --> CL[changelog.yml<br/>prepend <code>[Unreleased]</code> entry]:::post
+    MERGE --> RL[release.yml<br/>swift build · xcframework · artefact]:::post
+
+    RL --> TAG{<code>v*.*.*</code> tag?}:::gate
+    TAG -->|yes| GHR([Publish GitHub Release]):::release
+
+    classDef start   fill:#0969da,stroke:#0969da,color:#fff
+    classDef review  fill:#a371f7,stroke:#a371f7,color:#fff
+    classDef check   fill:#1f883d,stroke:#1f883d,color:#fff
+    classDef gate    fill:#bf8700,stroke:#bf8700,color:#fff
+    classDef merge   fill:#1f883d,stroke:#1f883d,color:#fff
+    classDef bypass  fill:#6e7681,stroke:#6e7681,color:#fff
+    classDef post    fill:#0969da,stroke:#0969da,color:#fff
+    classDef release fill:#cf222e,stroke:#cf222e,color:#fff
 ```
 
 ## Files

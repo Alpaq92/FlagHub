@@ -51,7 +51,7 @@ Image(flagWithCountryCode: "PL")?
 
 - [**docs/OVERVIEW.md**](docs/OVERVIEW.md) — deep dive: merged PRs and resolved issues per tier, what was deliberately not done, PNG optimization detail, install matrix, full Swift / SwiftUI usage, project layout, helper scripts, automation, maintenance
 - [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog log; `[Unreleased]` is auto-populated by the changelog workflow
-- [.github/README.md](.github/README.md) — CI / CodeQL / auto-merge / release pipeline
+- [.github/AUTOMATION.md](.github/AUTOMATION.md) — CI / CodeQL / auto-merge / release pipeline
 
 ## How it was built
 
