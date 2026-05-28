@@ -47,7 +47,7 @@ pod 'FlagKit'
 Add `Assets/FlagKit.xcassets` to your target.
 
 ## Usage (iOS, macOS, tvOS)
-FlagKit provides both rectangular unstyled flags and styled flags in a variety of shapes. Our [sample project](Sources/Swift/FlagKitDemo-iOS) demonstrates how to display flags and customize them into different shapes (rounded corners, square, circle).
+FlagKit provides both rectangular unstyled flags and styled flags in a variety of shapes — rounded corners, square, and circle.
 
 > **Note:** Styling is currently not supported by FlagKit on macOS
 
