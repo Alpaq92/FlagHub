@@ -1,0 +1,140 @@
+name: Sync upstream FlagKit
+
+# Pulls madebybowtie/FlagKit master into this fork's main. Runs daily; can
+# also be triggered manually. Opens (or force-updates) a single PR on the
+# branch `sync/upstream-flagkit` whenever our main is behind upstream.
+#
+# Note on workflows triggering workflows:
+#   The default GITHUB_TOKEN does NOT trigger downstream workflows on the
+#   PR it opens. So CI / CodeQL / Security won't run automatically on the
+#   sync PR if it's created with GITHUB_TOKEN. To fix that, create a
+#   personal access token (PAT) with 'repo' scope, store it as a repo
+#   secret named SYNC_PAT, and the checkout / PR-create steps below will
+#   pick it up. Without it the workflow still opens the PR; you just have
+#   to run CI manually via the workflow_dispatch button.
+
+on:
+  schedule:
+    - cron: '17 2 * * *'   # daily 02:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/madebybowtie/FlagKit.git
+          git fetch upstream master --tags --no-recurse-submodules
+
+      - name: Diagnose ahead/behind
+        id: check
+        run: |
+          AHEAD=$(git rev-list --count upstream/master..origin/main 2>/dev/null || echo 0)
+          BEHIND=$(git rev-list --count origin/main..upstream/master 2>/dev/null || echo 0)
+          echo "ahead=$AHEAD" >> "$GITHUB_OUTPUT"
+          echo "behind=$BEHIND" >> "$GITHUB_OUTPUT"
+          echo "main is ahead $AHEAD commit(s), behind $BEHIND commit(s) of upstream/master"
+
+      - name: Skip when already up to date
+        if: steps.check.outputs.behind == '0'
+        run: echo "Nothing to sync. Exiting."
+
+      - name: Create or refresh sync branch
+        if: steps.check.outputs.behind != '0'
+        id: branch
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          BRANCH=sync/upstream-flagkit
+          git checkout main
+          git checkout -B "$BRANCH"
+
+          if git merge --no-edit -m "chore(sync): merge upstream/master from madebybowtie/FlagKit" upstream/master; then
+            git push -f origin "$BRANCH"
+            echo "merged=true" >> "$GITHUB_OUTPUT"
+            echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          else
+            git merge --abort || true
+            echo "merged=false" >> "$GITHUB_OUTPUT"
+            echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update sync PR (clean merge)
+        if: steps.check.outputs.behind != '0' && steps.branch.outputs.merged == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH=${{ steps.branch.outputs.branch }}
+          BEHIND=${{ steps.check.outputs.behind }}
+          # If a PR for this branch already exists, just leave it (we already
+          # force-pushed the branch above, so the PR auto-updates).
+          if ! gh pr list --state open --head "$BRANCH" --json number --jq '.[0].number' | grep -q '^[0-9]'; then
+            BODY=$(cat <<'EOF'
+          Auto-opened by `.github/workflows/sync-upstream.yml`.
+
+          Fast-forward (or three-way) merge of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) `master` into our `main`.
+
+          ### Commits being merged
+
+          EOF
+            )
+            BODY="$BODY"$'\n'"$(git log --oneline origin/main..HEAD | head -50)"
+            BODY="$BODY"$'\n\n'"### Notes"$'\n\n'"- Review upstream changes for breaking API or asset modifications."$'\n'"- If everything looks fine, approve - the auto-merge workflow handles the rest after the 7-day soak."
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "chore(sync): merge $BEHIND commit(s) from upstream FlagKit master" \
+              --body "$BODY" \
+              --label upstream-sync,dependencies
+          else
+            echo "PR for $BRANCH already open - branch was force-pushed, PR auto-refreshed."
+          fi
+
+      - name: Open conflict issue (merge failed)
+        if: steps.check.outputs.behind != '0' && steps.branch.outputs.merged == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          BEHIND=${{ steps.check.outputs.behind }}
+          TITLE="Upstream sync conflict: $BEHIND commit(s) behind FlagKit master"
+          if ! gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number' | grep -q '^[0-9]'; then
+            gh issue create \
+              --title "$TITLE" \
+              --label upstream-sync,conflict \
+              --body "Daily upstream sync from \`madebybowtie/FlagKit\` master failed with merge conflicts. Manual resolution needed.
+
+          Local main is **$BEHIND commit(s) behind** upstream/master.
+
+          To resolve locally:
+          \`\`\`sh
+          git fetch upstream master
+          git checkout -b sync/upstream-flagkit-manual main
+          git merge upstream/master
+          # resolve conflicts
+          git push origin sync/upstream-flagkit-manual
+          gh pr create --base main
+          \`\`\`"
+          else
+            echo "Conflict issue already open - leaving alone."
+          fi
