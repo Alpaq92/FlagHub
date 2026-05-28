@@ -41,7 +41,13 @@
                 <use fill="black" fill-opacity="1" filter="url(#MD_filter-6)" xlink:href="#MD_path-5"></use>
                 <use fill="url(#MD_linearGradient-4)" fill-rule="evenodd" xlink:href="#MD_path-5"></use>
             </g>
-            <path d="M9,6 L10,6 L10.5,4.5 L11,6 L12,6 L12,9 L10.5,10 L9,9 L9,6 Z M10,7 L10,8.5 L11,8.5 L11,7 L10,7 Z" id="MD_Rectangle-1601" fill="#AF7F59"></path>
+            <g id="MD_CoatOfArms">
+                <path d="M9,5.5 L12,5.5 L12,8.5 Q12,10.5 10.5,11 Q9,10.5 9,8.5 Z" fill="url(#MD_linearGradient-4)" stroke="#8C5E2A" stroke-width="0.15"></path>
+                <path d="M9.6,6.6 Q9.3,5.9 9.7,5.8 Q9.9,6 9.9,6.5 Z M11.4,6.6 Q11.7,5.9 11.3,5.8 Q11.1,6 11.1,6.5 Z" fill="#5A3E20"></path>
+                <ellipse cx="10.5" cy="7.3" rx="0.85" ry="0.7" fill="#5A3E20"></ellipse>
+                <ellipse cx="10.5" cy="8.15" rx="0.4" ry="0.3" fill="#5A3E20"></ellipse>
+                <polygon points="10.5,3.7 10.7,4.3 11.3,4.3 10.8,4.65 11,5.25 10.5,4.9 10,5.25 10.2,4.65 9.7,4.3 10.3,4.3" fill="url(#MD_linearGradient-4)"></polygon>
+            </g>
         </g>
     </g>
 </svg>
