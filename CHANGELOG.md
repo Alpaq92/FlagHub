@@ -10,6 +10,14 @@ Entries under `[Unreleased]` are appended automatically by `.github/workflows/ch
 
 <!-- Auto-generated entries are inserted directly below this line by the changelog workflow. Do not delete the heading or the comment - the workflow looks for them. -->
 
+## [3.0.3] - 2026-05-28
+
+### Fixed
+- xcframework release artefact is now functional. Three issues stacked: (1) a module-name shadow that broke `BUILD_LIBRARY_FOR_DISTRIBUTION=YES` builds (resolved by renaming the internal `FlagHub` namespace to `FlagHubBundle`, fixed in 3.0.2); (2) SPM library targets don't produce `.framework` bundles via `xcodebuild archive`, so the create-xcframework step would fail to find any framework — switched to [`segment-integrations/swift-create-xcframework`](https://github.com/segment-integrations/swift-create-xcframework) (pinned to commit `33079d3`); (3) the tool's generated project omits the SPM resource bundle target, so `Bundle.module` was unavailable and flag artwork was missing — release.yml now injects `FlagHub_FlagHub.bundle` into each framework slice post-build, and the runtime bundle lookup falls through to that nested bundle when Xcode-wrapped.
+
+### Added
+- Binary `FlagHub-<version>-xcframework.tar.gz` attached to GitHub Releases alongside the source tarball. Five slices: `ios-arm64`, `ios-arm64_x86_64-simulator`, `macos-arm64_x86_64`, `tvos-arm64`, `tvos-arm64_x86_64-simulator`. visionOS slice can follow once the upstream tool supports it cleanly.
+
 ## [3.0.0] - 2026-05-28
 
 Initial fork-flagkit release. See [docs/OVERVIEW.md](docs/OVERVIEW.md) for the full audit trail.
@@ -38,5 +46,6 @@ Initial fork-flagkit release. See [docs/OVERVIEW.md](docs/OVERVIEW.md) for the f
 - `.gitignore` expanded for Python tooling (`scripts/`), Windows, Linux, IDE artefacts
 - README slimmed to a quick pitch; full project state in [docs/OVERVIEW.md](docs/OVERVIEW.md)
 
-[Unreleased]: https://github.com/Alpaq92/FlagHub/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/Alpaq92/FlagHub/compare/v3.0.3...HEAD
+[3.0.3]: https://github.com/Alpaq92/FlagHub/compare/v3.0.0...v3.0.3
 [3.0.0]: https://github.com/Alpaq92/FlagHub/releases/tag/v3.0.0
