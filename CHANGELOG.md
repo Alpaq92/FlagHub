@@ -12,7 +12,7 @@ Entries under `[Unreleased]` are appended automatically by `.github/workflows/ch
 
 ## [3.0.0] - 2026-05-28
 
-Initial fork-flagkit release. See [FORK.md](FORK.md) for the full audit trail.
+Initial fork-flagkit release. See [docs/OVERVIEW.md](docs/OVERVIEW.md) for the full audit trail.
 
 ### Merged
 - All seven open upstream pull requests ([#65](https://github.com/madebybowtie/FlagKit/pull/65), [#79](https://github.com/madebybowtie/FlagKit/pull/79), [#82](https://github.com/madebybowtie/FlagKit/pull/82), [#100](https://github.com/madebybowtie/FlagKit/pull/100), [#107](https://github.com/madebybowtie/FlagKit/pull/107), [#109](https://github.com/madebybowtie/FlagKit/pull/109), [#110](https://github.com/madebybowtie/FlagKit/pull/110))

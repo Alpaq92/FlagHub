@@ -55,14 +55,13 @@ Image(flagWithCountryCode: "PL")?
 
 ## Docs
 
-- [**docs/OVERVIEW.md**](docs/OVERVIEW.md) — deep dive: install details, full Swift / SwiftUI usage, project layout, helper scripts, automation, maintenance
-- [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog log of merged PRs; `[Unreleased]` is auto-populated by the changelog workflow
-- [FORK.md](FORK.md) — every commit grouped by upstream PR / issue, plus what was attempted and reverted
+- [**docs/OVERVIEW.md**](docs/OVERVIEW.md) — deep dive: merged PRs and resolved issues per tier, what was deliberately not done, PNG optimization detail, install matrix, full Swift / SwiftUI usage, project layout, helper scripts, automation, maintenance
+- [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog log; `[Unreleased]` is auto-populated by the changelog workflow
 - [.github/README.md](.github/README.md) — CI / CodeQL / auto-merge / release pipeline
 
 ## How it was built
 
-This fork was developed with **audit-based AI assistance** — an AI agent proposed each change, but every edit was reviewed against the upstream codebase, the project's intent, and visible inline previews before being committed. The audit trail is in the commit log and the `Polish` / `Revert` commits show where AI-generated content was reviewed, deemed below quality, and rolled back to upstream artwork. No artwork in this branch is AI-generated; the code additions (`Flag.all`, `Image(flag:)`) are reviewed line-by-line in `Sources/FlagKit/FlagCodes.swift` and `Sources/FlagKit/SwiftUI.swift`.
+This fork was developed with **audit-based AI assistance** — an AI agent proposed each change, but every edit was reviewed against the upstream codebase, the project's intent, and visible inline previews before being committed. The audit trail is in the commit log: the `Polish` / `Revert` commits show where AI-generated content was reviewed, deemed below quality, and rolled back to upstream artwork. No artwork in this branch is AI-generated; the code additions (`Flag.all`, `Image(flag:)`) are reviewed line-by-line in `Sources/FlagKit/FlagCodes.swift` and `Sources/FlagKit/SwiftUI.swift`.
 
 ## License
 

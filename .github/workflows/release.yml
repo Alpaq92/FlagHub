@@ -82,7 +82,8 @@ jobs:
             Package.swift \
             LICENSE \
             README.md \
-            FORK.md \
+            CHANGELOG.md \
+            docs/OVERVIEW.md \
             header.png
           if [[ -d .build/xcframework/FlagKit.xcframework ]]; then
             tar -czf "dist/FlagKit-${{ steps.meta.outputs.version }}-xcframework.tar.gz" \
