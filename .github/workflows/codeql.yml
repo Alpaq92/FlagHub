@@ -31,8 +31,12 @@ jobs:
           languages: ${{ matrix.language }}
           queries: security-and-quality
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      # Skip the default autobuild - it picks the FlagHubDemo-iOS xcodebuild
+      # target which has app-bundle / signing assumptions that don't apply in
+      # headless CI. The SPM target is the actual library and is what consumers
+      # will compile against; analyse that instead.
+      - name: Build SPM target for CodeQL
+        run: swift build
 
       - name: Run analysis
         uses: github/codeql-action/analyze@v3
