@@ -11,8 +11,9 @@ This document is the deep dive. The repo's [README](../README.md) is the elevato
 5. [Project layout](#project-layout)
 6. [Helper scripts](#helper-scripts)
 7. [GitHub automation](#github-automation)
-8. [Maintenance notes](#maintenance-notes)
-9. [License](#license)
+8. [Changelog](#changelog)
+9. [Maintenance notes](#maintenance-notes)
+10. [License](#license)
 
 ---
 
@@ -240,11 +241,31 @@ The full PR-to-deploy pipeline is documented in [`.github/README.md`](../.github
 - **Build / test** — `swift build`, `swift test`, `xcodebuild` for iOS Simulator, `pod lib lint` on every PR + push (`.github/workflows/ci.yml`).
 - **Security** — CodeQL `security-and-quality` queries on Swift (`codeql.yml`), gitleaks for secrets + dependency-review-action + Trivy filesystem scan (`security.yml`).
 - **Auto-merge** — any PR that's at least 7 days old, has an `APPROVED` review by a code owner / collaborator / `coderabbitai[bot]`, and has every check green is squash-merged automatically. Workflow runs every 6 hours and on every review event (`auto-merge.yml`).
+- **Changelog** — `changelog.yml` listens for `pull_request: closed (merged)` and prepends a one-line entry under `## [Unreleased]` in [CHANGELOG.md](../CHANGELOG.md), committing back with `[skip ci]` so it doesn't loop.
 - **Release** — every push to main rebuilds the SPM target and xcframework, uploads a tarball as a workflow artefact, and on `v*.*.*` tags also publishes a GitHub Release (`release.yml`).
 
 You can always **bypass** by clicking *Merge pull request* in the UI — the auto-merge workflow only enables eligible PRs, it doesn't block manual merges. Branch protection is configured with `enforce_admins=false` so the repo owner keeps the merge button.
 
 A standalone copy of the same documentation is also in `C:\Users\Alpaq\Documents\github-pr-automation-setup.md` for reuse on other projects.
+
+---
+
+## Changelog
+
+The repo carries a [CHANGELOG.md](../CHANGELOG.md) in Keep-a-Changelog format. The `[Unreleased]` section is **auto-populated** by `.github/workflows/changelog.yml`:
+
+- Trigger: `pull_request: closed` on `main` / `master` with `merged == true`.
+- For each merged PR, prepends a Markdown bullet:
+
+  ```text
+  - [#<number>](<pr-url>) <pr-title> — @<author>
+    > <first non-blank line of the PR body, capped at 200 chars>
+  ```
+
+- Idempotent: if `[#<number>]` is already in the Unreleased section the workflow exits without committing.
+- The bot commit is signed by `github-actions[bot]` and ends with `[skip ci]` so neither the CI, auto-merge, nor release workflows re-trigger on it.
+
+At release time, rename the `## [Unreleased]` heading to `## [X.Y.Z] - YYYY-MM-DD`, add a fresh empty `## [Unreleased]` block above it, and tag the commit `vX.Y.Z`. The release workflow then publishes the GitHub Release using the Markdown between those two headings as the release notes.
 
 ---
 
