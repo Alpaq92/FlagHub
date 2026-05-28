@@ -1,5 +1,5 @@
 # Flags
-This set currently includes the 255 flags below:
+This set currently includes the 256 flags below:
 
 | Flag | Code | Region |
 | :-------------: | :-------------: | ------------- |
@@ -258,3 +258,4 @@ This set currently includes the 255 flags below:
 | <img src='PNG/ZA@2x.png?raw=true' width='21' height='15'> | ZA | South Africa
 | <img src='PNG/ZM@2x.png?raw=true' width='21' height='15'> | ZM | Zambia
 | <img src='PNG/ZW@2x.png?raw=true' width='21' height='15'> | ZW | Zimbabwe
+| <img src='PNG/WW@2x.png?raw=true' width='21' height='15'> | WW | World (default / unknown)
