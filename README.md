@@ -7,11 +7,10 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/Alpaq92/FlagHub/ci.yml?branch=main&label=build)](https://github.com/Alpaq92/FlagHub/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/github/v/release/Alpaq92/FlagHub?label=release&sort=semver)](https://github.com/Alpaq92/FlagHub/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Alpaq92/FlagHub/total?label=downloads&color=blue&cacheSeconds=300)](https://github.com/Alpaq92/FlagHub/releases)
-
-[![Commit activity](https://img.shields.io/github/commit-activity/m/Alpaq92/FlagHub?label=commits%2Fmonth)](https://github.com/Alpaq92/FlagHub/commits/main)
 [![Last commit](https://img.shields.io/github/last-commit/Alpaq92/FlagHub)](https://github.com/Alpaq92/FlagHub/commits/main)
-[![Open PRs](https://img.shields.io/github/issues-pr/Alpaq92/FlagHub?label=openned%20PRs)](https://github.com/Alpaq92/FlagHub/pulls)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/Alpaq92/FlagHub?label=commits%2Fmonth)](https://github.com/Alpaq92/FlagHub/commits/main)
 
+[![Open PRs](https://img.shields.io/github/issues-pr/Alpaq92/FlagHub?label=openned%20PRs)](https://github.com/Alpaq92/FlagHub/pulls)
 [![SwiftPM compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen)](https://github.com/Carthage/Carthage)
 [![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey)](Package.swift)
