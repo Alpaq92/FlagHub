@@ -4,7 +4,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
     import UIKit
 #elseif os(macOS)
     import AppKit
@@ -29,7 +29,7 @@ public class Flag: NSObject {
         return emoji.count == 1 ? emoji : nil
     }
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
     /**
      Original unstyled flag image
      */
