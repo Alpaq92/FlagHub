@@ -16,7 +16,7 @@
 
 Beautiful flag icons for usage in apps and on the web. All flags are provided as stand-alone PNG and SVG files. FlagKit also provides an Asset Catalog and framework for easy use on Apple platforms.
 
-The bundled asset set now contains **265 flags** including the nine ISO codes most commonly missing from competing libraries (AC, AQ, BQ, CP, DG, EA, EH, IC, TA).
+The bundled asset set carries **256 flags** — the same set as upstream FlagKit, with several existing flags corrected (AL eagle, CN stars, MD coat of arms, US stripes and stars, ZW Hungwe bird, CH and VA squared) and the SY/IR upstream PRs applied.
 
 ## Installation (iOS, macOS, tvOS, visionOS)
 

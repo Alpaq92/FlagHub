@@ -1,9 +1,8 @@
 # Flags
-This set currently includes the 265 flags below:
+This set currently includes the 256 flags below:
 
 | Flag | Code | Region |
 | :-------------: | :-------------: | ------------- |
-| <img src='PNG/AC@2x.png?raw=true' width='21' height='15'> | AC | Ascension Island
 | <img src='PNG/AD@2x.png?raw=true' width='21' height='15'> | AD | Andorra
 | <img src='PNG/AE@2x.png?raw=true' width='21' height='15'> | AE | United Arab Emirates
 | <img src='PNG/AF@2x.png?raw=true' width='21' height='15'> | AF | Afghanistan
@@ -12,7 +11,6 @@ This set currently includes the 265 flags below:
 | <img src='PNG/AL@2x.png?raw=true' width='21' height='15'> | AL | Albania
 | <img src='PNG/AM@2x.png?raw=true' width='21' height='15'> | AM | Armenia
 | <img src='PNG/AO@2x.png?raw=true' width='21' height='15'> | AO | Angola
-| <img src='PNG/AQ@2x.png?raw=true' width='21' height='15'> | AQ | Antarctica
 | <img src='PNG/AR@2x.png?raw=true' width='21' height='15'> | AR | Argentina
 | <img src='PNG/AS@2x.png?raw=true' width='21' height='15'> | AS | American Samoa
 | <img src='PNG/AT@2x.png?raw=true' width='21' height='15'> | AT | Austria
@@ -33,7 +31,6 @@ This set currently includes the 265 flags below:
 | <img src='PNG/BM@2x.png?raw=true' width='21' height='15'> | BM | Bermuda
 | <img src='PNG/BN@2x.png?raw=true' width='21' height='15'> | BN | Brunei
 | <img src='PNG/BO@2x.png?raw=true' width='21' height='15'> | BO | Bolivia
-| <img src='PNG/BQ@2x.png?raw=true' width='21' height='15'> | BQ | Bonaire, Sint Eustatius & Saba
 | <img src='PNG/BR@2x.png?raw=true' width='21' height='15'> | BR | Brazil
 | <img src='PNG/BS@2x.png?raw=true' width='21' height='15'> | BS | Bahamas
 | <img src='PNG/BT@2x.png?raw=true' width='21' height='15'> | BT | Bhutan
@@ -53,7 +50,6 @@ This set currently includes the 265 flags below:
 | <img src='PNG/CM@2x.png?raw=true' width='21' height='15'> | CM | Cameroon
 | <img src='PNG/CN@2x.png?raw=true' width='21' height='15'> | CN | China
 | <img src='PNG/CO@2x.png?raw=true' width='21' height='15'> | CO | Colombia
-| <img src='PNG/CP@2x.png?raw=true' width='21' height='15'> | CP | Clipperton Island
 | <img src='PNG/CR@2x.png?raw=true' width='21' height='15'> | CR | Costa Rica
 | <img src='PNG/CU@2x.png?raw=true' width='21' height='15'> | CU | Cuba
 | <img src='PNG/CV@2x.png?raw=true' width='21' height='15'> | CV | Cape Verde
@@ -62,17 +58,14 @@ This set currently includes the 265 flags below:
 | <img src='PNG/CY@2x.png?raw=true' width='21' height='15'> | CY | Cyprus
 | <img src='PNG/CZ@2x.png?raw=true' width='21' height='15'> | CZ | Czech Republic
 | <img src='PNG/DE@2x.png?raw=true' width='21' height='15'> | DE | Germany
-| <img src='PNG/DG@2x.png?raw=true' width='21' height='15'> | DG | Diego Garcia (BIOT)
 | <img src='PNG/DJ@2x.png?raw=true' width='21' height='15'> | DJ | Djibouti
 | <img src='PNG/DK@2x.png?raw=true' width='21' height='15'> | DK | Denmark
 | <img src='PNG/DM@2x.png?raw=true' width='21' height='15'> | DM | Dominica
 | <img src='PNG/DO@2x.png?raw=true' width='21' height='15'> | DO | Dominican Republic
 | <img src='PNG/DZ@2x.png?raw=true' width='21' height='15'> | DZ | Algeria
-| <img src='PNG/EA@2x.png?raw=true' width='21' height='15'> | EA | Ceuta & Melilla
 | <img src='PNG/EC@2x.png?raw=true' width='21' height='15'> | EC | Ecuador
 | <img src='PNG/EE@2x.png?raw=true' width='21' height='15'> | EE | Estonia
 | <img src='PNG/EG@2x.png?raw=true' width='21' height='15'> | EG | Egypt
-| <img src='PNG/EH@2x.png?raw=true' width='21' height='15'> | EH | Western Sahara
 | <img src='PNG/ER@2x.png?raw=true' width='21' height='15'> | ER | Eritrea
 | <img src='PNG/ES@2x.png?raw=true' width='21' height='15'> | ES | Spain
 | <img src='PNG/ET@2x.png?raw=true' width='21' height='15'> | ET | Ethiopia
@@ -113,7 +106,6 @@ This set currently includes the 265 flags below:
 | <img src='PNG/HR@2x.png?raw=true' width='21' height='15'> | HR | Croatia
 | <img src='PNG/HT@2x.png?raw=true' width='21' height='15'> | HT | Haiti
 | <img src='PNG/HU@2x.png?raw=true' width='21' height='15'> | HU | Hungary
-| <img src='PNG/IC@2x.png?raw=true' width='21' height='15'> | IC | Canary Islands
 | <img src='PNG/ID@2x.png?raw=true' width='21' height='15'> | ID | Indonesia
 | <img src='PNG/IE@2x.png?raw=true' width='21' height='15'> | IE | Ireland
 | <img src='PNG/IL@2x.png?raw=true' width='21' height='15'> | IL | Israel
@@ -228,7 +220,6 @@ This set currently includes the 265 flags below:
 | <img src='PNG/SX@2x.png?raw=true' width='21' height='15'> | SX | Sint Maarten
 | <img src='PNG/SY@2x.png?raw=true' width='21' height='15'> | SY | Syria
 | <img src='PNG/SZ@2x.png?raw=true' width='21' height='15'> | SZ | Swaziland
-| <img src='PNG/TA@2x.png?raw=true' width='21' height='15'> | TA | Tristan da Cunha
 | <img src='PNG/TC@2x.png?raw=true' width='21' height='15'> | TC | Turks & Caicos Islands
 | <img src='PNG/TD@2x.png?raw=true' width='21' height='15'> | TD | Chad
 | <img src='PNG/TF@2x.png?raw=true' width='21' height='15'> | TF | French Southern Territories

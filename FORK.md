@@ -42,22 +42,8 @@ All seven open pull requests on upstream were fast-forwarded onto this fork. Con
 | [#96](https://github.com/madebybowtie/FlagKit/issues/96) | ZW flag is wrong | Added the missing Zimbabwe Bird (Hungwe) silhouette — body, hooked beak, tail-feather fan, two legs, banded soapstone plinth — centered over the red star |
 | [#104](https://github.com/madebybowtie/FlagKit/issues/104) | AL flag has wrong shape and red | Red shifted from `#EE343C..#E2222A` to `#D81E2A..#BE0E22` (closer to Pantone 186); abstract X-shape replaced with a stylised double-headed eagle (hourglass body, primary-feather scallops on each wing, hooked beaks, eye dots, 7-feather tail, talons) |
 
-### Tier 3 — missing flags
-Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://github.com/madebybowtie/FlagKit/issues/73), [#83](https://github.com/madebybowtie/FlagKit/issues/83), [#84](https://github.com/madebybowtie/FlagKit/issues/84), [#97](https://github.com/madebybowtie/FlagKit/issues/97), [#101](https://github.com/madebybowtie/FlagKit/issues/101) collectively requested a long list of additional flag codes. Nine were added:
-
-| Code | Subject |
-|---|---|
-| AC | Ascension Island |
-| AQ | Antarctica |
-| BQ | Bonaire, Sint Eustatius & Saba |
-| CP | Clipperton Island |
-| DG | Diego Garcia (BIOT) |
-| EA | Ceuta & Melilla |
-| EH | Western Sahara |
-| IC | Canary Islands |
-| TA | Tristan da Cunha |
-
-`Assets/Flags.md` was updated to list them (count 256 → 265). PNG generation for these is **deferred** — see "What was not done" below.
+### Tier 3 — missing flags (not done)
+Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://github.com/madebybowtie/FlagKit/issues/73), [#83](https://github.com/madebybowtie/FlagKit/issues/83), [#84](https://github.com/madebybowtie/FlagKit/issues/84), [#97](https://github.com/madebybowtie/FlagKit/issues/97), [#101](https://github.com/madebybowtie/FlagKit/issues/101) collectively requested a long list of additional flag codes (AC, AQ, BQ, CP, DG, EA, EH, IC, TA were the most-cited). Hand-drawn approximations of all nine were prototyped on this branch but **reverted** — the silhouettes did not meet the quality bar of upstream FlagKit's existing assets, and shipping low-fidelity flag artwork was a worse outcome than leaving the codes unsupported. The commits remain in the branch history if anyone wants to pick them up and finish them with proper vector tooling. Net: this fork carries the same 256 flags as upstream.
 
 ### Tier 4 — code features
 | Issue | Title | Resolution |
@@ -71,22 +57,17 @@ Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://g
 ## What was not done, and why
 
 ### PNG regeneration for visually-modified flags
-**Affected:** CH, VA (Tier 1 square fix); AL, CN, MD, US, ZW (Tier 2 visual fixes); AC, AQ, BQ, CP, DG, EA, EH, IC, TA (Tier 3 new flags).
+**Affected:** CH, VA (Tier 1 square fix); AL, CN, MD, US, ZW (Tier 2 visual fixes).
 
 The repository ships rasterised `@1x`, `@2x`, `@3x` PNGs alongside the SVGs in `Assets/PNG/` and inside `Sources/FlagKit/FlagKit.xcassets/<CODE>.imageset/`. No SVG→PNG rasterizer was available in the environment this fork was built in (`ImageMagick`, `Inkscape`, `rsvg-convert`, and `cairosvg` are all missing). The SVG fixes therefore are not reflected in the PNG assets that the Asset Catalog (and consequently `Flag.originalImage`) actually loads.
 
-To finish this work locally, regenerate every changed/new flag's PNGs from its SVG at 1×, 2×, and 3× of the canonical 21×15 size (so 21×15, 42×30, 63×45 respectively — or 15×15 / 30×30 / 45×45 for the square CH and VA). Tooling like `rsvg-convert` or batch-scripted Inkscape works fine for this.
+To finish this work locally, regenerate each modified flag's PNGs from its SVG at 1×, 2×, and 3× of the canonical 21×15 size (so 21×15, 42×30, 63×45 respectively — or 15×15 / 30×30 / 45×45 for the square CH and VA). Tooling like `rsvg-convert` or batch-scripted Inkscape works fine for this.
 
-### xcassets registration for the nine new Tier 3 flags
-Same root cause — the imageset folders weren't created because there are no PNGs to put in them yet. Once PNGs exist, each new code needs:
-1. A new `Sources/FlagKit/FlagKit.xcassets/<CODE>.imageset/` directory.
-2. A `Contents.json` matching the post-#100 pattern (no `1x` filename — only `@2x` and `@3x`).
-3. The corresponding `@2x.png` and `@3x.png` files.
-
-Until then `Flag(countryCode:)` returns `nil` for these nine codes and `Flag.all` skips them. The SVGs are present in `Assets/SVG/` and are listed in `Flags.md`.
+### Nine missing-flag ISO codes (Tier 3)
+Hand-drawn approximations for AC, AQ, BQ, CP, DG, EA, EH, IC, TA were attempted on this branch and reverted — see Tier 3 above. Adding these properly requires a vector illustrator (Sketch / Illustrator / Affinity / Inkscape) and ideally public-domain reference SVGs, which is out of scope for raw-XML editing.
 
 ### Heraldic-accuracy redraws of the complex emblems
-**Affected:** AL eagle, MD coat of arms, ZW bird, AC/DG/TA shields, IC coat of arms.
+**Affected:** AL eagle, MD coat of arms, ZW bird.
 
 The reworked SVGs are hand-written silhouettes built from primitives and bezier curves. They read as the right idea at typical UI sizes (sidebar, picker, list cell) but they are not heraldically accurate at large render sizes. Producing renderings of the same quality as the rest of FlagKit's polished asset set requires a vector illustrator (Sketch / Illustrator / Affinity / Inkscape) and ideally a public-domain reference SVG to import — out of scope for raw-XML editing.
 
