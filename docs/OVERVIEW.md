@@ -315,7 +315,7 @@ python scripts/optimize_pngs.py        # if you added or replaced a PNG
 
 ## GitHub automation
 
-The full PR-to-deploy pipeline is documented in [`.github/AUTOMATION.md`](../.github/AUTOMATION.md). Quick summary:
+The full PR-to-deploy pipeline is documented in [`AUTOMATION.md`](AUTOMATION.md). Quick summary:
 
 - **Reviews** — CodeRabbit auto-reviews every PR (`.coderabbit.yaml`).
 - **Build / test** — `swift build`, `swift test`, `xcodebuild` for iOS Simulator, `pod lib lint` on every PR + push (`.github/workflows/ci.yml`).

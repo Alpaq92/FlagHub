@@ -12,7 +12,7 @@ on:
       - 'docs/**'
       - 'LICENSE'
       - 'header.png'
-      - '.github/AUTOMATION.md'
+      - 'docs/AUTOMATION.md'
       - 'SECURITY.md'
       - 'CHANGELOG.md'
   pull_request:
@@ -22,7 +22,7 @@ on:
       - 'docs/**'
       - 'LICENSE'
       - 'header.png'
-      - '.github/AUTOMATION.md'
+      - 'docs/AUTOMATION.md'
       - 'SECURITY.md'
       - 'CHANGELOG.md'
   workflow_dispatch:
