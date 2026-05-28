@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, fork-flagkit]
+  pull_request:
+    branches: [main, master, fork-flagkit]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  spm-build:
+    name: Swift Package build & test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.app
+        continue-on-error: true
+      - name: Show Swift version
+        run: swift --version
+      - name: Build (host platform)
+        run: swift build
+      - name: Test (host platform)
+        run: swift test
+
+  spm-build-ios:
+    name: SPM build for iOS Simulator
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for iOS Simulator
+        run: |
+          xcodebuild build \
+            -scheme FlagKit \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath .build/xcode \
+            | xcpretty
+        continue-on-error: false
+
+  podspec-lint:
+    name: CocoaPods spec lint
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint podspec
+        run: pod lib lint FlagKit.podspec --allow-warnings

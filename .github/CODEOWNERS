@@ -1,0 +1,7 @@
+# Code owners for FlagHub
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-security/customizing-your-repository/about-code-owners
+#
+# Every file owned by @Alpaq92. Add per-path overrides below if delegating
+# specific areas to collaborators (e.g. `Sources/FlagKit/SwiftUI.swift @some-swift-expert`).
+
+* @Alpaq92

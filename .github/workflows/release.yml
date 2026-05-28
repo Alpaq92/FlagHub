@@ -1,0 +1,112 @@
+name: Build & Release
+
+# "Every merge to main triggers a rebuild and deploy" -
+#   - On every push to main / master / fork-flagkit: build, test, optimise,
+#     and upload the framework + asset archive as a workflow artefact
+#   - On semver tags (v*.*.*): also publish a GitHub Release with the
+#     archive attached
+
+on:
+  push:
+    branches: [main, master, fork-flagkit]
+    tags: ['v*.*.*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build framework
+    runs-on: macos-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      archive: ${{ steps.archive.outputs.path }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        id: meta
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build SPM
+        run: swift build -c release
+
+      - name: Test SPM
+        run: swift test
+
+      - name: Build xcframework
+        run: |
+          set -e
+          mkdir -p .build/xcframework
+          for platform in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do
+            case "$platform" in
+              iOS)              destination='generic/platform=iOS' ;;
+              iOS-Simulator)    destination='generic/platform=iOS Simulator' ;;
+              macOS)            destination='generic/platform=macOS' ;;
+              tvOS)             destination='generic/platform=tvOS' ;;
+              tvOS-Simulator)   destination='generic/platform=tvOS Simulator' ;;
+            esac
+            xcodebuild archive \
+              -scheme FlagKit \
+              -destination "$destination" \
+              -archivePath ".build/xcframework/FlagKit-${platform}.xcarchive" \
+              SKIP_INSTALL=NO \
+              BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+          done
+          xcodebuild -create-xcframework \
+            $(for p in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do echo "-framework .build/xcframework/FlagKit-$p.xcarchive/Products/Library/Frameworks/FlagKit.framework"; done) \
+            -output .build/xcframework/FlagKit.xcframework
+        continue-on-error: true
+
+      - name: Archive
+        id: archive
+        run: |
+          set -e
+          mkdir -p dist
+          tar -czf "dist/FlagKit-${{ steps.meta.outputs.version }}.tar.gz" \
+            Sources/FlagKit \
+            Assets \
+            FlagKit.podspec \
+            Package.swift \
+            LICENSE \
+            README.md \
+            FORK.md \
+            header.png
+          if [[ -d .build/xcframework/FlagKit.xcframework ]]; then
+            tar -czf "dist/FlagKit-${{ steps.meta.outputs.version }}-xcframework.tar.gz" \
+              -C .build/xcframework FlagKit.xcframework
+          fi
+          echo "path=dist" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FlagKit-${{ steps.meta.outputs.version }}
+          path: dist/
+
+  release:
+    name: GitHub Release (tagged only)
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: FlagKit-${{ needs.build.outputs.version }}
+          path: dist/
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true
