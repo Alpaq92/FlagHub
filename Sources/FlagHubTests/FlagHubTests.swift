@@ -7,7 +7,7 @@ import FlagHub
 
 class FlagHubTests: XCTestCase {
     func testAssetBunde() {
-        let bundle = FlagHub.assetBundle
+        let bundle = FlagHubBundle.assetBundle
         XCTAssertNotNil(bundle)
     }
 }

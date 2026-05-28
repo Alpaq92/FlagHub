@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "FlagHub"
-  s.version = "2.5"
+  s.version = "3.0.2"
   s.summary = "Beautiful flag icons for usage in apps and on the web."
   s.swift_versions = ['5.0', '5.1', '5.2', '5.3']
 

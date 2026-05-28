@@ -39,7 +39,7 @@ public class Flag: NSObject {
      Returns a flag if the country code is supported, otherwise it returns nil
      */
     @objc public init?(countryCode: String) {
-        let bundle = FlagHub.assetBundle
+        let bundle = FlagHubBundle.assetBundle
 
         // Asset catalog (Xcode-built framework: xcassets compiled into Assets.car)
         if let image = UIImage(named: countryCode, in: bundle, compatibleWith: nil) {
@@ -97,7 +97,7 @@ public class Flag: NSObject {
      Returns a flag if the country code is supported, otherwise it returns nil
      */
     @objc public init?(countryCode: String) {
-        let bundle = FlagHub.assetBundle
+        let bundle = FlagHubBundle.assetBundle
 
         // Asset catalog (Xcode-built framework: xcassets compiled into Assets.car)
         if let image = bundle.image(forResource: NSImage.Name(countryCode)) {
