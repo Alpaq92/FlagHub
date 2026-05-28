@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/madebybowtie/FlagKit.git", :tag => "v#{s.version}" }
   s.source_files = "Sources/FlagKit/*.swift"
-  s.resource_bundle = "Sources/FlagKit/FlagKit.xcassets"
+  s.resources = "Sources/FlagKit/FlagKit.xcassets"
 end

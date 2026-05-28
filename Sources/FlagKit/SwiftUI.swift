@@ -21,7 +21,7 @@ public extension Image {
     /// native pixel dimensions:
     ///
     /// ```swift
-    /// Image(flag: flag)?
+    /// Image(flag: flag)
     ///     .resizable()
     ///     .interpolation(.high)
     ///     .aspectRatio(contentMode: .fit)
