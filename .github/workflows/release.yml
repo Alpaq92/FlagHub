@@ -10,6 +10,16 @@ on:
   push:
     branches: [main, master, fork-flagkit]
     tags: ['v*.*.*']
+    # Skip rebuild for docs-only changes. Tags still publish releases
+    # regardless of which files changed in the tagged commit.
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - 'header.png'
+      - '.github/AUTOMATION.md'
+      - 'SECURITY.md'
+      - 'CHANGELOG.md'
   workflow_dispatch:
 
 permissions:

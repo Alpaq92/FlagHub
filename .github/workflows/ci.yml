@@ -3,8 +3,28 @@ name: CI
 on:
   push:
     branches: [main, master, fork-flagkit]
+    # Skip CI for changes that can't affect the build output: docs, the
+    # changelog, the license, the header banner image, anything under docs/.
+    # Conventional-commits 'docs:' / 'chore(changelog):' style commits will
+    # match this filter and skip the entire CI workflow.
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - 'header.png'
+      - '.github/AUTOMATION.md'
+      - 'SECURITY.md'
+      - 'CHANGELOG.md'
   pull_request:
     branches: [main, master, fork-flagkit]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - 'header.png'
+      - '.github/AUTOMATION.md'
+      - 'SECURITY.md'
+      - 'CHANGELOG.md'
   workflow_dispatch:
 
 concurrency:

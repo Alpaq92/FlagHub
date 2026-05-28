@@ -1,5 +1,18 @@
 # Dependabot version updates.
 # Docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# Conventional-commits convention used here:
+#   ci:           changes to CI configuration (GitHub Actions, workflows)
+#   build:        changes that affect the build system or external deps (SPM)
+#   chore(deps):  routine dependency bump
+#
+# Breaking changes (major-version bumps) should carry a '!' after the type,
+# e.g. 'feat!: ...' or 'build(deps)!: ...'. Dependabot itself doesn't add
+# the '!' for major bumps - either set commit-message.prefix manually here
+# for a given ecosystem if every bump in that ecosystem is breaking, or
+# rename the commit on the PR via a follow-up commit before merge. The
+# auto-merge workflow treats every Dependabot PR as author-trusted; the
+# convention is for downstream consumers reading the squash-merge log.
 
 version: 2
 updates:
