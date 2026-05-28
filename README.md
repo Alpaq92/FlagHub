@@ -1,5 +1,3 @@
-![FlagHub 3.0](header.png)
-
 # FlagHub
 
 <div align="center">
@@ -14,6 +12,10 @@
 [![License](https://img.shields.io/github/license/Alpaq92/FlagHub?color=blue)](LICENSE)
 
 </div>
+
+<p align="center">
+  <img src="header.png" alt="FlagHub 3.0">
+</p>
 
 Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) — every open upstream PR merged, packaging issues fixed, two Swift API conveniences added. The flag artwork is identical to upstream.
 
