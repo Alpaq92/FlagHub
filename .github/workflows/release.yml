@@ -56,28 +56,32 @@ jobs:
       - name: Test SPM
         run: swift test
 
+      # SPM packages don't natively produce .framework bundles via
+      # `xcodebuild archive`. The community tool swift-create-xcframework
+      # generates a wrapper Xcode project, builds each platform slice as a
+      # framework, and stitches them into an xcframework. Pinned to a
+      # specific commit on the maintained segment-integrations fork for
+      # reproducibility (upstream unsignedapps/swift-create-xcframework is
+      # archived as of 2024).
+      - name: Install swift-create-xcframework
+        run: |
+          set -e
+          git clone https://github.com/segment-integrations/swift-create-xcframework.git /tmp/scx
+          git -C /tmp/scx checkout 33079d3
+          swift build --package-path /tmp/scx -c release
+          sudo cp /tmp/scx/.build/release/swift-create-xcframework /usr/local/bin/
+
       - name: Build xcframework
         run: |
           set -e
           mkdir -p .build/xcframework
-          for platform in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do
-            case "$platform" in
-              iOS)              destination='generic/platform=iOS' ;;
-              iOS-Simulator)    destination='generic/platform=iOS Simulator' ;;
-              macOS)            destination='generic/platform=macOS' ;;
-              tvOS)             destination='generic/platform=tvOS' ;;
-              tvOS-Simulator)   destination='generic/platform=tvOS Simulator' ;;
-            esac
-            xcodebuild archive \
-              -scheme FlagHub \
-              -destination "$destination" \
-              -archivePath ".build/xcframework/FlagHub-${platform}.xcarchive" \
-              SKIP_INSTALL=NO \
-              BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-          done
-          xcodebuild -create-xcframework \
-            $(for p in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do echo "-framework .build/xcframework/FlagHub-$p.xcarchive/Products/Library/Frameworks/FlagHub.framework"; done) \
-            -output .build/xcframework/FlagHub.xcframework
+          swift-create-xcframework \
+            --platform ios \
+            --platform macos \
+            --platform tvos \
+            --stack-evolution \
+            --output .build/xcframework \
+            FlagHub
         continue-on-error: true
 
       - name: Archive
