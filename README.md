@@ -5,11 +5,6 @@
 
 # FlagHub
 
-[![CI](https://github.com/Alpaq92/FlagHub/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/Alpaq92/FlagHub/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/codeql.yml)
-[![Security](https://github.com/Alpaq92/FlagHub/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/security.yml)
-[![Release](https://github.com/Alpaq92/FlagHub/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/Alpaq92/FlagHub/actions/workflows/release.yml)
-
 [![Latest release](https://img.shields.io/github/v/release/Alpaq92/FlagHub?label=release&sort=semver)](https://github.com/Alpaq92/FlagHub/releases/latest)
 [![GitHub release downloads](https://img.shields.io/github/downloads/Alpaq92/FlagHub/total?label=GitHub%20downloads&color=blue)](https://github.com/Alpaq92/FlagHub/releases)
 [![SwiftPM compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager)
