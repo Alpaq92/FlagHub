@@ -16,10 +16,21 @@ import Foundation
 /// See <https://github.com/apple/swift/issues/56573>.
 public enum FlagHubBundle {
     public static var assetBundle: Bundle {
-        #if SWIFT_PACKAGE
+        #if SWIFT_PACKAGE && !Xcode
+        // Pure `swift build` (incl. `swift test`) — Bundle.module is
+        // synthesised by SwiftPM.
         return Bundle.module
         #else
-        return Bundle(for: BundleLocator.self)
+        // CocoaPods / Carthage / hand-rolled Xcode targets put the
+        // assets directly in the framework bundle. swift-create-xcframework
+        // (Xcode-wrapped SPM) nests them inside `FlagHub_FlagHub.bundle`
+        // for resource-target separation — check that first.
+        let containingBundle = Bundle(for: BundleLocator.self)
+        if let nestedURL = containingBundle.url(forResource: "FlagHub_FlagHub", withExtension: "bundle"),
+           let nested = Bundle(url: nestedURL) {
+            return nested
+        }
+        return containingBundle
         #endif
     }
 
