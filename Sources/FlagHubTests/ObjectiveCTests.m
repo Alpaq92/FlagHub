@@ -3,7 +3,7 @@
 //
 
 @import XCTest;
-@import FlagKit;
+@import FlagHub;
 
 @interface ObjectiveCTests : XCTestCase
 

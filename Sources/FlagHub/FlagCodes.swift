@@ -1,6 +1,6 @@
 //
 //  FlagCodes.swift
-//  FlagKit
+//  FlagHub
 //
 //  Country / region code enumeration and a `Flag.all` accessor.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 extension Flag {
 
-    /// Every country / region code that FlagKit ships an asset for.
+    /// Every country / region code that FlagHub ships an asset for.
     ///
     /// The list is mostly ISO 3166-1 alpha-2, with a few additions:
     /// `EU` (European Union), `WW` (default / unknown world flag),
@@ -44,7 +44,7 @@ extension Flag {
         "XK", "YE", "YT", "ZA", "ZM", "ZW"
     ]
 
-    /// Every flag FlagKit ships, materialised. Returned in the same
+    /// Every flag FlagHub ships, materialised. Returned in the same
     /// alphabetical order as ``supportedCountryCodes``.
     ///
     /// The list is computed lazily on each access; pin it to a local

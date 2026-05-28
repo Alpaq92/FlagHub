@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import FlagKit
+import FlagHub
 
 extension FlagStyle {
     static let all: [FlagStyle] = [.none, .roundedRect, .square, .circle]

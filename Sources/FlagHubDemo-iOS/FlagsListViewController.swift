@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import FlagKit
+import FlagHub
 
 class FlagsListViewController: UITableViewController {
     var style: FlagStyle = .none {

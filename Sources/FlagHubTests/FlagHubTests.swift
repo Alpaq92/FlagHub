@@ -3,11 +3,11 @@
 //
 
 import XCTest
-import FlagKit
+import FlagHub
 
-class FlagKitTests: XCTestCase {
+class FlagHubTests: XCTestCase {
     func testAssetBunde() {
-        let bundle = FlagKit.assetBundle
+        let bundle = FlagHub.assetBundle
         XCTAssertNotNil(bundle)
     }
 }

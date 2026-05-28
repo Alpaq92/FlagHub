@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A49DD801F2F63F90007E46E"
-               BuildableName = "FlagKit.framework"
-               BlueprintName = "FlagKit"
-               ReferencedContainer = "container:FlagKit.xcodeproj">
+               BuildableName = "FlagHub.framework"
+               BlueprintName = "FlagHub"
+               ReferencedContainer = "container:FlagHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A59879C1F306C260097DB64"
-               BuildableName = "FlagKitTests.xctest"
-               BlueprintName = "FlagKitTests"
-               ReferencedContainer = "container:FlagKit.xcodeproj">
+               BuildableName = "FlagHubTests.xctest"
+               BlueprintName = "FlagHubTests"
+               ReferencedContainer = "container:FlagHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A49DD801F2F63F90007E46E"
-            BuildableName = "FlagKit.framework"
-            BlueprintName = "FlagKit"
-            ReferencedContainer = "container:FlagKit.xcodeproj">
+            BuildableName = "FlagHub.framework"
+            BlueprintName = "FlagHub"
+            ReferencedContainer = "container:FlagHub.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -56,9 +56,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A59879C1F306C260097DB64"
-               BuildableName = "FlagKitTests.xctest"
-               BlueprintName = "FlagKitTests"
-               ReferencedContainer = "container:FlagKit.xcodeproj">
+               BuildableName = "FlagHubTests.xctest"
+               BlueprintName = "FlagHubTests"
+               ReferencedContainer = "container:FlagHub.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A49DD801F2F63F90007E46E"
-            BuildableName = "FlagKit.framework"
-            BlueprintName = "FlagKit"
-            ReferencedContainer = "container:FlagKit.xcodeproj">
+            BuildableName = "FlagHub.framework"
+            BlueprintName = "FlagHub"
+            ReferencedContainer = "container:FlagHub.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -93,9 +93,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A49DD801F2F63F90007E46E"
-            BuildableName = "FlagKit.framework"
-            BlueprintName = "FlagKit"
-            ReferencedContainer = "container:FlagKit.xcodeproj">
+            BuildableName = "FlagHub.framework"
+            BlueprintName = "FlagHub"
+            ReferencedContainer = "container:FlagHub.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

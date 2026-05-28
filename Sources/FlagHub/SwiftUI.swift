@@ -1,8 +1,8 @@
 //
 //  SwiftUI.swift
-//  FlagKit
+//  FlagHub
 //
-//  SwiftUI bridging for FlagKit. See issue #93.
+//  SwiftUI bridging for FlagHub. See issue #93.
 //
 
 #if canImport(SwiftUI)
@@ -14,7 +14,7 @@ public extension Image {
 
     /// Wraps an existing ``Flag``'s underlying raster image in a SwiftUI ``Image``.
     ///
-    /// Because FlagKit currently ships rasterised PNG assets rather than
+    /// Because FlagHub currently ships rasterised PNG assets rather than
     /// vector PDFs, SwiftUI's default scaling can produce a soft / pixelated
     /// result at non-`@1x` sizes. Apply `.interpolation(.high)` and
     /// `.resizable()` for sharper results when sizing flags above their

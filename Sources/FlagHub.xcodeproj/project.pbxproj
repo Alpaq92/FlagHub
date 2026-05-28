@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A49DD861F2F63F90007E46E /* FlagKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A49DD841F2F63F90007E46E /* FlagKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A49DD8E1F2F665E0007E46E /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A49DD8D1F2F665E0007E46E /* FlagKit.xcassets */; };
+		3A49DD861F2F63F90007E46E /* FlagHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A49DD841F2F63F90007E46E /* FlagHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A49DD8E1F2F665E0007E46E /* FlagHub.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A49DD8D1F2F665E0007E46E /* FlagHub.xcassets */; };
 		3A49DD901F2F6B760007E46E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49DD8F1F2F6B760007E46E /* UIImage.swift */; };
-		3A49DD931F2F6C1F0007E46E /* FlagKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49DD921F2F6C1F0007E46E /* FlagKit.swift */; };
+		3A49DD931F2F6C1F0007E46E /* FlagHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49DD921F2F6C1F0007E46E /* FlagHub.swift */; };
 		3A49DD951F2F6F010007E46E /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49DD941F2F6F010007E46E /* NSImage.swift */; };
-		3A5987A01F306C260097DB64 /* FlagKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59879F1F306C260097DB64 /* FlagKitTests.swift */; };
-		3A5987A21F306C260097DB64 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagKit.framework */; };
+		3A5987A01F306C260097DB64 /* FlagHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A59879F1F306C260097DB64 /* FlagHubTests.swift */; };
+		3A5987A21F306C260097DB64 /* FlagHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagHub.framework */; };
 		3A5987AA1F306CF20097DB64 /* Matchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5987A91F306CF20097DB64 /* Matchers.swift */; };
 		3A8B39B41F39D8AB00D75099 /* FlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACCEF181F38A37D00B7CA85 /* FlagStyle.swift */; };
 		3A9206DA1F31FD73006A9589 /* FlagsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9206D91F31FD73006A9589 /* FlagsListViewController.swift */; };
@@ -27,8 +27,8 @@
 		3AF78CE41F31CE0400BD3D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF78CE31F31CE0400BD3D10 /* AppDelegate.swift */; };
 		3AF78CEB1F31CE0400BD3D10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF78CEA1F31CE0400BD3D10 /* Assets.xcassets */; };
 		3AF78CEE1F31CE0400BD3D10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF78CEC1F31CE0400BD3D10 /* LaunchScreen.storyboard */; };
-		3AF78CF31F31CF9100BD3D10 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagKit.framework */; };
-		3AF78CF41F31CF9100BD3D10 /* FlagKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3AF78CF31F31CF9100BD3D10 /* FlagHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagHub.framework */; };
+		3AF78CF41F31CF9100BD3D10 /* FlagHub.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A49DD811F2F63F90007E46E /* FlagHub.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +37,14 @@
 			containerPortal = 3A49DD5B1F2F62D10007E46E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A49DD801F2F63F90007E46E;
-			remoteInfo = FlagKit;
+			remoteInfo = FlagHub;
 		};
 		3AF78CF51F31CF9100BD3D10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A49DD5B1F2F62D10007E46E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A49DD801F2F63F90007E46E;
-			remoteInfo = FlagKit;
+			remoteInfo = FlagHub;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -55,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3AF78CF41F31CF9100BD3D10 /* FlagKit.framework in Embed Frameworks */,
+				3AF78CF41F31CF9100BD3D10 /* FlagHub.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,18 +63,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A49DD811F2F63F90007E46E /* FlagKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlagKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A49DD841F2F63F90007E46E /* FlagKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlagKit.h; sourceTree = "<group>"; };
+		3A49DD811F2F63F90007E46E /* FlagHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlagHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A49DD841F2F63F90007E46E /* FlagHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlagHub.h; sourceTree = "<group>"; };
 		3A49DD851F2F63F90007E46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A49DD8A1F2F64BC0007E46E /* FlagKitFramework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlagKitFramework.xcconfig; sourceTree = "<group>"; };
-		3A49DD8D1F2F665E0007E46E /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
+		3A49DD8A1F2F64BC0007E46E /* FlagHubFramework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlagHubFramework.xcconfig; sourceTree = "<group>"; };
+		3A49DD8D1F2F665E0007E46E /* FlagHub.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagHub.xcassets; sourceTree = "<group>"; };
 		3A49DD8F1F2F6B760007E46E /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		3A49DD921F2F6C1F0007E46E /* FlagKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagKit.swift; sourceTree = "<group>"; };
+		3A49DD921F2F6C1F0007E46E /* FlagHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagHub.swift; sourceTree = "<group>"; };
 		3A49DD941F2F6F010007E46E /* NSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
-		3A59879D1F306C260097DB64 /* FlagKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A59879F1F306C260097DB64 /* FlagKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagKitTests.swift; sourceTree = "<group>"; };
+		3A59879D1F306C260097DB64 /* FlagHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A59879F1F306C260097DB64 /* FlagHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagHubTests.swift; sourceTree = "<group>"; };
 		3A5987A11F306C260097DB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A5987A81F306C390097DB64 /* FlagKitTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlagKitTests.xcconfig; sourceTree = "<group>"; };
+		3A5987A81F306C390097DB64 /* FlagHubTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlagHubTests.xcconfig; sourceTree = "<group>"; };
 		3A5987A91F306CF20097DB64 /* Matchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matchers.swift; sourceTree = "<group>"; };
 		3A9206D91F31FD73006A9589 /* FlagsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsListViewController.swift; sourceTree = "<group>"; };
 		3A9206DB1F31FE9F006A9589 /* Flag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		3ACCEF241F39983D00B7CA85 /* Flag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		3ACCEF261F39A57900B7CA85 /* FlagTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagTests.swift; sourceTree = "<group>"; };
 		3ACCEF281F39B32B00B7CA85 /* ObjectiveCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCTests.m; sourceTree = "<group>"; };
-		3AF78CE11F31CE0400BD3D10 /* FlagKitDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlagKitDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF78CE11F31CE0400BD3D10 /* FlagHubDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlagHubDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF78CE31F31CE0400BD3D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF78CEA1F31CE0400BD3D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AF78CED1F31CE0400BD3D10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A5987A21F306C260097DB64 /* FlagKit.framework in Frameworks */,
+				3A5987A21F306C260097DB64 /* FlagHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AF78CF31F31CF9100BD3D10 /* FlagKit.framework in Frameworks */,
+				3AF78CF31F31CF9100BD3D10 /* FlagHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +122,9 @@
 		3A49DD5A1F2F62D10007E46E = {
 			isa = PBXGroup;
 			children = (
-				3A49DD831F2F63F90007E46E /* FlagKit */,
-				3A59879E1F306C260097DB64 /* FlagKitTests */,
-				3AF78CE21F31CE0400BD3D10 /* FlagKitDemo-iOS */,
+				3A49DD831F2F63F90007E46E /* FlagHub */,
+				3A59879E1F306C260097DB64 /* FlagHubTests */,
+				3AF78CE21F31CE0400BD3D10 /* FlagHubDemo-iOS */,
 				3A49DD821F2F63F90007E46E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -132,44 +132,44 @@
 		3A49DD821F2F63F90007E46E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A49DD811F2F63F90007E46E /* FlagKit.framework */,
-				3A59879D1F306C260097DB64 /* FlagKitTests.xctest */,
-				3AF78CE11F31CE0400BD3D10 /* FlagKitDemo-iOS.app */,
+				3A49DD811F2F63F90007E46E /* FlagHub.framework */,
+				3A59879D1F306C260097DB64 /* FlagHubTests.xctest */,
+				3AF78CE11F31CE0400BD3D10 /* FlagHubDemo-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A49DD831F2F63F90007E46E /* FlagKit */ = {
+		3A49DD831F2F63F90007E46E /* FlagHub */ = {
 			isa = PBXGroup;
 			children = (
-				3A49DD921F2F6C1F0007E46E /* FlagKit.swift */,
+				3A49DD921F2F6C1F0007E46E /* FlagHub.swift */,
 				3ACCEF241F39983D00B7CA85 /* Flag.swift */,
 				3ACCEF181F38A37D00B7CA85 /* FlagStyle.swift */,
 				3A49DD8F1F2F6B760007E46E /* UIImage.swift */,
 				3A49DD941F2F6F010007E46E /* NSImage.swift */,
-				3A49DD8D1F2F665E0007E46E /* FlagKit.xcassets */,
-				3A49DD8A1F2F64BC0007E46E /* FlagKitFramework.xcconfig */,
-				3A49DD841F2F63F90007E46E /* FlagKit.h */,
+				3A49DD8D1F2F665E0007E46E /* FlagHub.xcassets */,
+				3A49DD8A1F2F64BC0007E46E /* FlagHubFramework.xcconfig */,
+				3A49DD841F2F63F90007E46E /* FlagHub.h */,
 				3A49DD851F2F63F90007E46E /* Info.plist */,
 			);
-			path = FlagKit;
+			path = FlagHub;
 			sourceTree = "<group>";
 		};
-		3A59879E1F306C260097DB64 /* FlagKitTests */ = {
+		3A59879E1F306C260097DB64 /* FlagHubTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A59879F1F306C260097DB64 /* FlagKitTests.swift */,
+				3A59879F1F306C260097DB64 /* FlagHubTests.swift */,
 				3ACCEF261F39A57900B7CA85 /* FlagTests.swift */,
 				3ACCEF281F39B32B00B7CA85 /* ObjectiveCTests.m */,
 				3A5987A91F306CF20097DB64 /* Matchers.swift */,
-				3A5987A81F306C390097DB64 /* FlagKitTests.xcconfig */,
+				3A5987A81F306C390097DB64 /* FlagHubTests.xcconfig */,
 				3A5987A11F306C260097DB64 /* Info.plist */,
 				3ACCEF1A1F38B2CB00B7CA85 /* Fixtures.xcassets */,
 			);
-			path = FlagKitTests;
+			path = FlagHubTests;
 			sourceTree = "<group>";
 		};
-		3AF78CE21F31CE0400BD3D10 /* FlagKitDemo-iOS */ = {
+		3AF78CE21F31CE0400BD3D10 /* FlagHubDemo-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				3AF78CE31F31CE0400BD3D10 /* AppDelegate.swift */,
@@ -181,7 +181,7 @@
 				3AF78CEC1F31CE0400BD3D10 /* LaunchScreen.storyboard */,
 				3AF78CEF1F31CE0400BD3D10 /* Info.plist */,
 			);
-			path = "FlagKitDemo-iOS";
+			path = "FlagHubDemo-iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,16 +191,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A49DD861F2F63F90007E46E /* FlagKit.h in Headers */,
+				3A49DD861F2F63F90007E46E /* FlagHub.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3A49DD801F2F63F90007E46E /* FlagKit */ = {
+		3A49DD801F2F63F90007E46E /* FlagHub */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A49DD871F2F63F90007E46E /* Build configuration list for PBXNativeTarget "FlagKit" */;
+			buildConfigurationList = 3A49DD871F2F63F90007E46E /* Build configuration list for PBXNativeTarget "FlagHub" */;
 			buildPhases = (
 				3A49DD7C1F2F63F90007E46E /* Sources */,
 				3A49DD7D1F2F63F90007E46E /* Frameworks */,
@@ -211,14 +211,14 @@
 			);
 			dependencies = (
 			);
-			name = FlagKit;
-			productName = FlagKit;
-			productReference = 3A49DD811F2F63F90007E46E /* FlagKit.framework */;
+			name = FlagHub;
+			productName = FlagHub;
+			productReference = 3A49DD811F2F63F90007E46E /* FlagHub.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3A59879C1F306C260097DB64 /* FlagKitTests */ = {
+		3A59879C1F306C260097DB64 /* FlagHubTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A5987A51F306C260097DB64 /* Build configuration list for PBXNativeTarget "FlagKitTests" */;
+			buildConfigurationList = 3A5987A51F306C260097DB64 /* Build configuration list for PBXNativeTarget "FlagHubTests" */;
 			buildPhases = (
 				3A5987991F306C260097DB64 /* Sources */,
 				3A59879A1F306C260097DB64 /* Frameworks */,
@@ -229,14 +229,14 @@
 			dependencies = (
 				3A5987A41F306C260097DB64 /* PBXTargetDependency */,
 			);
-			name = FlagKitTests;
-			productName = FlagKitTests;
-			productReference = 3A59879D1F306C260097DB64 /* FlagKitTests.xctest */;
+			name = FlagHubTests;
+			productName = FlagHubTests;
+			productReference = 3A59879D1F306C260097DB64 /* FlagHubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3AF78CE01F31CE0400BD3D10 /* FlagKitDemo-iOS */ = {
+		3AF78CE01F31CE0400BD3D10 /* FlagHubDemo-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3AF78CF21F31CE0400BD3D10 /* Build configuration list for PBXNativeTarget "FlagKitDemo-iOS" */;
+			buildConfigurationList = 3AF78CF21F31CE0400BD3D10 /* Build configuration list for PBXNativeTarget "FlagHubDemo-iOS" */;
 			buildPhases = (
 				3AF78CDD1F31CE0400BD3D10 /* Sources */,
 				3AF78CDE1F31CE0400BD3D10 /* Frameworks */,
@@ -248,9 +248,9 @@
 			dependencies = (
 				3AF78CF61F31CF9100BD3D10 /* PBXTargetDependency */,
 			);
-			name = "FlagKitDemo-iOS";
-			productName = "FlagKitDemo-iOS";
-			productReference = 3AF78CE11F31CE0400BD3D10 /* FlagKitDemo-iOS.app */;
+			name = "FlagHubDemo-iOS";
+			productName = "FlagHubDemo-iOS";
+			productReference = 3AF78CE11F31CE0400BD3D10 /* FlagHubDemo-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -280,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A49DD5E1F2F62D10007E46E /* Build configuration list for PBXProject "FlagKit" */;
+			buildConfigurationList = 3A49DD5E1F2F62D10007E46E /* Build configuration list for PBXProject "FlagHub" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -293,9 +293,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A49DD801F2F63F90007E46E /* FlagKit */,
-				3A59879C1F306C260097DB64 /* FlagKitTests */,
-				3AF78CE01F31CE0400BD3D10 /* FlagKitDemo-iOS */,
+				3A49DD801F2F63F90007E46E /* FlagHub */,
+				3A59879C1F306C260097DB64 /* FlagHubTests */,
+				3AF78CE01F31CE0400BD3D10 /* FlagHubDemo-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -305,7 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A49DD8E1F2F665E0007E46E /* FlagKit.xcassets in Resources */,
+				3A49DD8E1F2F665E0007E46E /* FlagHub.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A49DD931F2F6C1F0007E46E /* FlagKit.swift in Sources */,
+				3A49DD931F2F6C1F0007E46E /* FlagHub.swift in Sources */,
 				3ACCEF251F39983D00B7CA85 /* Flag.swift in Sources */,
 				3A8B39B41F39D8AB00D75099 /* FlagStyle.swift in Sources */,
 				3A49DD951F2F6F010007E46E /* NSImage.swift in Sources */,
@@ -345,7 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A5987A01F306C260097DB64 /* FlagKitTests.swift in Sources */,
+				3A5987A01F306C260097DB64 /* FlagHubTests.swift in Sources */,
 				3ACCEF291F39B32B00B7CA85 /* ObjectiveCTests.m in Sources */,
 				3A5987AA1F306CF20097DB64 /* Matchers.swift in Sources */,
 				3ACCEF271F39A57900B7CA85 /* FlagTests.swift in Sources */,
@@ -369,12 +369,12 @@
 /* Begin PBXTargetDependency section */
 		3A5987A41F306C260097DB64 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3A49DD801F2F63F90007E46E /* FlagKit */;
+			target = 3A49DD801F2F63F90007E46E /* FlagHub */;
 			targetProxy = 3A5987A31F306C260097DB64 /* PBXContainerItemProxy */;
 		};
 		3AF78CF61F31CF9100BD3D10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3A49DD801F2F63F90007E46E /* FlagKit */;
+			target = 3A49DD801F2F63F90007E46E /* FlagHub */;
 			targetProxy = 3AF78CF51F31CF9100BD3D10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -461,7 +461,7 @@
 		};
 		3A49DD881F2F63F90007E46E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A49DD8A1F2F64BC0007E46E /* FlagKitFramework.xcconfig */;
+			baseConfigurationReference = 3A49DD8A1F2F64BC0007E46E /* FlagHubFramework.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -508,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = FlagKit/Info.plist;
+				INFOPLIST_FILE = FlagHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -516,7 +516,7 @@
 				MARKETING_VERSION = 2.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -531,7 +531,7 @@
 		};
 		3A49DD891F2F63F90007E46E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A49DD8A1F2F64BC0007E46E /* FlagKitFramework.xcconfig */;
+			baseConfigurationReference = 3A49DD8A1F2F64BC0007E46E /* FlagHubFramework.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -572,14 +572,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = FlagKit/Info.plist;
+				INFOPLIST_FILE = FlagHub/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 2.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -593,7 +593,7 @@
 		};
 		3A5987A61F306C260097DB64 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A5987A81F306C390097DB64 /* FlagKitTests.xcconfig */;
+			baseConfigurationReference = 3A5987A81F306C390097DB64 /* FlagHubTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -634,12 +634,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = FlagKitTests/Info.plist;
+				INFOPLIST_FILE = FlagHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagHubTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -650,7 +650,7 @@
 		};
 		3A5987A71F306C260097DB64 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A5987A81F306C390097DB64 /* FlagKitTests.xcconfig */;
+			baseConfigurationReference = 3A5987A81F306C390097DB64 /* FlagHubTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -685,11 +685,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = FlagKitTests/Info.plist;
+				INFOPLIST_FILE = FlagHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.madebybowtie.FlagHubTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -741,12 +741,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "FlagKitDemo-iOS/Info.plist";
+				INFOPLIST_FILE = "FlagHubDemo-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.FlagKitDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.FlagHubDemo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -793,11 +793,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "FlagKitDemo-iOS/Info.plist";
+				INFOPLIST_FILE = "FlagHubDemo-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.FlagKitDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.madebybowtie.FlagHubDemo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -809,7 +809,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A49DD5E1F2F62D10007E46E /* Build configuration list for PBXProject "FlagKit" */ = {
+		3A49DD5E1F2F62D10007E46E /* Build configuration list for PBXProject "FlagHub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A49DD5F1F2F62D10007E46E /* Debug */,
@@ -818,7 +818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A49DD871F2F63F90007E46E /* Build configuration list for PBXNativeTarget "FlagKit" */ = {
+		3A49DD871F2F63F90007E46E /* Build configuration list for PBXNativeTarget "FlagHub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A49DD881F2F63F90007E46E /* Debug */,
@@ -827,7 +827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A5987A51F306C260097DB64 /* Build configuration list for PBXNativeTarget "FlagKitTests" */ = {
+		3A5987A51F306C260097DB64 /* Build configuration list for PBXNativeTarget "FlagHubTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A5987A61F306C260097DB64 /* Debug */,
@@ -836,7 +836,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AF78CF21F31CE0400BD3D10 /* Build configuration list for PBXNativeTarget "FlagKitDemo-iOS" */ = {
+		3AF78CF21F31CE0400BD3D10 /* Build configuration list for PBXNativeTarget "FlagHubDemo-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AF78CF01F31CE0400BD3D10 /* Debug */,

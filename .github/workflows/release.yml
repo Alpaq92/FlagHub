@@ -59,15 +59,15 @@ jobs:
               tvOS-Simulator)   destination='generic/platform=tvOS Simulator' ;;
             esac
             xcodebuild archive \
-              -scheme FlagKit \
+              -scheme FlagHub \
               -destination "$destination" \
-              -archivePath ".build/xcframework/FlagKit-${platform}.xcarchive" \
+              -archivePath ".build/xcframework/FlagHub-${platform}.xcarchive" \
               SKIP_INSTALL=NO \
               BUILD_LIBRARY_FOR_DISTRIBUTION=YES
           done
           xcodebuild -create-xcframework \
-            $(for p in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do echo "-framework .build/xcframework/FlagKit-$p.xcarchive/Products/Library/Frameworks/FlagKit.framework"; done) \
-            -output .build/xcframework/FlagKit.xcframework
+            $(for p in iOS iOS-Simulator macOS tvOS tvOS-Simulator; do echo "-framework .build/xcframework/FlagHub-$p.xcarchive/Products/Library/Frameworks/FlagHub.framework"; done) \
+            -output .build/xcframework/FlagHub.xcframework
         continue-on-error: true
 
       - name: Archive
@@ -75,25 +75,25 @@ jobs:
         run: |
           set -e
           mkdir -p dist
-          tar -czf "dist/FlagKit-${{ steps.meta.outputs.version }}.tar.gz" \
-            Sources/FlagKit \
+          tar -czf "dist/FlagHub-${{ steps.meta.outputs.version }}.tar.gz" \
+            Sources/FlagHub \
             Assets \
-            FlagKit.podspec \
+            FlagHub.podspec \
             Package.swift \
             LICENSE \
             README.md \
             CHANGELOG.md \
             docs/OVERVIEW.md \
             header.png
-          if [[ -d .build/xcframework/FlagKit.xcframework ]]; then
-            tar -czf "dist/FlagKit-${{ steps.meta.outputs.version }}-xcframework.tar.gz" \
-              -C .build/xcframework FlagKit.xcframework
+          if [[ -d .build/xcframework/FlagHub.xcframework ]]; then
+            tar -czf "dist/FlagHub-${{ steps.meta.outputs.version }}-xcframework.tar.gz" \
+              -C .build/xcframework FlagHub.xcframework
           fi
           echo "path=dist" >> "$GITHUB_OUTPUT"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: FlagKit-${{ steps.meta.outputs.version }}
+          name: FlagHub-${{ steps.meta.outputs.version }}
           path: dist/
 
   release:
@@ -104,7 +104,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: FlagKit-${{ needs.build.outputs.version }}
+          name: FlagHub-${{ needs.build.outputs.version }}
           path: dist/
       - uses: softprops/action-gh-release@v2
         with:

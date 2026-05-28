@@ -35,12 +35,12 @@ Swift Package Manager:
 .package(url: "https://github.com/Alpaq92/FlagHub.git", branch: "main")
 ```
 
-Or CocoaPods / Carthage / drop `Sources/FlagKit/FlagKit.xcassets` into your target.
+Or CocoaPods / Carthage / drop `Sources/FlagHub/FlagHub.xcassets` into your target.
 
 ## Use
 
 ```swift
-import FlagKit
+import FlagHub
 
 let flag = Flag(countryCode: "JP")!
 flag.originalImage          // UIImage / NSImage
@@ -67,7 +67,7 @@ Image(flagWithCountryCode: "PL")?
 
 ## How it was built
 
-This fork was developed with **audit-based AI assistance** — an AI agent proposed each change, but every edit was reviewed against the upstream codebase, the project's intent, and visible inline previews before being committed. The audit trail is in the commit log: the `Polish` / `Revert` commits show where AI-generated content was reviewed, deemed below quality, and rolled back to upstream artwork. No artwork in this branch is AI-generated; the code additions (`Flag.all`, `Image(flag:)`) are reviewed line-by-line in `Sources/FlagKit/FlagCodes.swift` and `Sources/FlagKit/SwiftUI.swift`.
+This fork was developed with **audit-based AI assistance** — an AI agent proposed each change, but every edit was reviewed against the upstream codebase, the project's intent, and visible inline previews before being committed. The audit trail is in the commit log: the `Polish` / `Revert` commits show where AI-generated content was reviewed, deemed below quality, and rolled back to upstream artwork. No artwork in this branch is AI-generated; the code additions (`Flag.all`, `Image(flag:)`) are reviewed line-by-line in `Sources/FlagHub/FlagCodes.swift` and `Sources/FlagHub/SwiftUI.swift`.
 
 ## License
 

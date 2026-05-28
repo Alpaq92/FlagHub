@@ -41,7 +41,7 @@ All seven open pull requests on upstream were fast-forwarded onto this fork. Con
 | Upstream PR | Title | Notes |
 |---|---|---|
 | [#65](https://github.com/madebybowtie/FlagKit/pull/65) | Add `Flag.emoji` accessor | Clean merge |
-| [#79](https://github.com/madebybowtie/FlagKit/pull/79) | Update `FlagKit.podspec` | Conflict in `swift_versions` — kept the newer list (5.0–5.3) from master; PR was stale |
+| [#79](https://github.com/madebybowtie/FlagKit/pull/79) | Update `FlagHub.podspec` | Conflict in `swift_versions` — kept the newer list (5.0–5.3) from master; PR was stale |
 | [#82](https://github.com/madebybowtie/FlagKit/pull/82) | Fix sizing of ZA flags | Clean merge |
 | [#100](https://github.com/madebybowtie/FlagKit/pull/100) | Migrate `resource` → `resource_bundle` | Clean merge (the podspec attribute key itself was wrong DSL — fixed separately, see Infrastructure below) |
 | [#107](https://github.com/madebybowtie/FlagKit/pull/107) | Add visionOS support | Conflict in `Flag.swift` — kept #65's emoji block alongside #107's `os(visionOS)` guard |
@@ -75,14 +75,14 @@ Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://g
 | Issue | Subject | Resolution |
 |---|---|---|
 | [#81](https://github.com/madebybowtie/FlagKit/issues/81) | Swift Package Manager support | **Already done upstream** — `Package.swift` at repo root, kept as-is |
-| [#92](https://github.com/madebybowtie/FlagKit/issues/92) | "Get all flags in one call" | Added `Flag.supportedCountryCodes: [String]` and `Flag.all: [Flag]` in `Sources/FlagKit/FlagCodes.swift` |
-| [#93](https://github.com/madebybowtie/FlagKit/issues/93) | Pixelated images in SwiftUI | Added `Image(flag:)`, `Image(flagWithCountryCode:)`, `Image(flagWithCountryCode:style:)` in `Sources/FlagKit/SwiftUI.swift`. The root cause (raster-only PNG assets) is not fully solved, but the docs now point consumers at `.interpolation(.high)` and `.resizable()` for sharper SwiftUI rendering |
+| [#92](https://github.com/madebybowtie/FlagKit/issues/92) | "Get all flags in one call" | Added `Flag.supportedCountryCodes: [String]` and `Flag.all: [Flag]` in `Sources/FlagHub/FlagCodes.swift` |
+| [#93](https://github.com/madebybowtie/FlagKit/issues/93) | Pixelated images in SwiftUI | Added `Image(flag:)`, `Image(flagWithCountryCode:)`, `Image(flagWithCountryCode:style:)` in `Sources/FlagHub/SwiftUI.swift`. The root cause (raster-only PNG assets) is not fully solved, but the docs now point consumers at `.interpolation(.high)` and `.resizable()` for sharper SwiftUI rendering |
 
 ### Infrastructure
 
 - Every PNG losslessly recompressed with `oxipng -o 6` — see [PNG optimization](#png-optimization).
 - Header banner rebranded to "FlagHub 3.0" with a soft white glow for dark-mode legibility.
-- `FlagKit.podspec` attribute fixed: PR #100's `s.resource_bundle = ...` (singular, invalid CocoaPods DSL) → `s.resources = ...` (would have silently dropped the asset catalog at `pod install` time).
+- `FlagHub.podspec` attribute fixed: PR #100's `s.resource_bundle = ...` (singular, invalid CocoaPods DSL) → `s.resources = ...` (would have silently dropped the asset catalog at `pod install` time).
 - `.gitignore` expanded for Python tooling (`scripts/`), Windows, Linux, and IDE artefacts.
 - `LICENSE` carries `Copyright (c) 2026 Alpaq92` alongside the upstream `Copyright (c) 2016 Bowtie AB` notice.
 
@@ -113,7 +113,7 @@ Affected: the same set covered in the Tier 2 revert (AL eagle, MD coat of arms, 
 | [#99](https://github.com/madebybowtie/FlagKit/issues/99) | Placeholder "unknown" flags | The restored WW flag (#95) partly addresses this; further "unknown" variants (pirate, question-mark, etc.) are a design judgement call |
 | [#102](https://github.com/madebybowtie/FlagKit/issues/102) | Slow compile times | Needs profiling to find the root cause (likely xcassets size). No measurement was taken |
 | [#103](https://github.com/madebybowtie/FlagKit/issues/103) | AZ flag not working | No reproduction provided; cannot diagnose without more info from the reporter |
-| [#105](https://github.com/madebybowtie/FlagKit/issues/105) | Flags not displaying in web | FlagKit is an Apple-platforms library; issue lacks reproduction or codebase reference |
+| [#105](https://github.com/madebybowtie/FlagKit/issues/105) | Flags not displaying in web | FlagHub is an Apple-platforms library; issue lacks reproduction or codebase reference |
 | [#111](https://github.com/madebybowtie/FlagKit/issues/111) | "Abandoned?" | Meta question; this fork itself is the answer |
 
 ---
@@ -138,7 +138,7 @@ Every raster asset in the repo was losslessly recompressed. The upstream PNGs we
 | Path | Files | Before | After | Saved |
 |---|---:|---:|---:|---:|
 | `Assets/PNG/` | 768 | 1,374 KiB | 798 KiB | 42 % |
-| `Sources/FlagKit/FlagKit.xcassets/` | 512 | 882 KiB | 504 KiB | 43 % |
+| `Sources/FlagHub/FlagHub.xcassets/` | 512 | 882 KiB | 504 KiB | 43 % |
 | `header.png` | 1 | 100 KiB | 71 KiB | 29 % |
 | **Total** | **1,281** | **2,356 KiB** | **1,373 KiB** | **41.7 %** |
 
@@ -176,12 +176,12 @@ github "madebybowtie/FlagKit"
 ### CocoaPods
 
 ```ruby
-pod 'FlagKit'
+pod 'FlagHub'
 ```
 
 ### Manual
 
-Drop `Sources/FlagKit/FlagKit.xcassets` into your Xcode target.
+Drop `Sources/FlagHub/FlagHub.xcassets` into your Xcode target.
 
 ---
 
@@ -218,7 +218,7 @@ The list is mostly ISO 3166-1 alpha-2, with these additions: `EU`, `WW`, `LGBT`,
 
 ```swift
 import SwiftUI
-import FlagKit
+import FlagHub
 
 struct CountryCell: View {
     let countryCode: String
@@ -245,7 +245,7 @@ Image(flagWithCountryCode: "PL", style: .circle)            // failable, styled 
 ### Direct bundle access
 
 ```swift
-let bundle = FlagKit.assetBundle
+let bundle = FlagHub.assetBundle
 let originalImage = UIImage(named: countryCode, in: bundle, compatibleWith: nil)
 ```
 
@@ -260,21 +260,21 @@ FlagHub/
 │   ├── SVG/                   # 255 SVG sources (every flag except WW)
 │   └── Flags.md               # alphabetical table of every supported flag
 ├── Sources/
-│   ├── FlagKit/               # the Swift Package target
+│   ├── FlagHub/               # the Swift Package target
 │   │   ├── Flag.swift             # core Flag class + emoji + style
 │   │   ├── FlagCodes.swift        # Flag.all / Flag.supportedCountryCodes (#92)
-│   │   ├── FlagKit.swift          # bundle accessor
+│   │   ├── FlagHub.swift          # bundle accessor
 │   │   ├── FlagStyle.swift        # rounded / square / circle
 │   │   ├── NSImage.swift          # macOS extension
 │   │   ├── SwiftUI.swift          # Image(flag:) initialisers (#93)
 │   │   ├── UIImage.swift          # iOS / tvOS / visionOS extension
-│   │   ├── FlagKit.h              # ObjC umbrella
-│   │   ├── FlagKit.xcassets/      # asset catalogue, one imageset per code
-│   │   ├── FlagKitFramework.xcconfig
+│   │   ├── FlagHub.h              # ObjC umbrella
+│   │   ├── FlagHub.xcassets/      # asset catalogue, one imageset per code
+│   │   ├── FlagHubFramework.xcconfig
 │   │   └── Info.plist
-│   ├── FlagKitDemo-iOS/       # demo app (Xcode project only, not part of SPM target)
-│   ├── FlagKitTests/          # XCTest target
-│   └── FlagKit.xcodeproj/     # Xcode project for framework + demo + tests
+│   ├── FlagHubDemo-iOS/       # demo app (Xcode project only, not part of SPM target)
+│   ├── FlagHubTests/          # XCTest target
+│   └── FlagHub.xcodeproj/     # Xcode project for framework + demo + tests
 ├── scripts/                   # Python helpers (see below)
 ├── docs/
 │   └── OVERVIEW.md            # this file
@@ -284,7 +284,7 @@ FlagHub/
 │   └── workflows/             # CI / CodeQL / security / auto-merge / changelog / release
 ├── .coderabbit.yaml           # CodeRabbit profile
 ├── CHANGELOG.md
-├── FlagKit.podspec
+├── FlagHub.podspec
 ├── LICENSE                    # MIT (Bowtie AB + Alpaq92)
 ├── Package.swift              # Swift Package Manager manifest
 ├── README.md                  # short pitch
@@ -353,9 +353,9 @@ At release time, rename the `## [Unreleased]` heading to `## [X.Y.Z] - YYYY-MM-D
 
 1. Drop the new SVG into `Assets/SVG/` (uppercase ISO code, e.g. `AC.svg`).
 2. Add an entry in `Assets/Flags.md` (alphabetically; bump the header count).
-3. Add the code to `Flag.supportedCountryCodes` in `Sources/FlagKit/FlagCodes.swift` (alphabetical).
+3. Add the code to `Flag.supportedCountryCodes` in `Sources/FlagHub/FlagCodes.swift` (alphabetical).
 4. Run `python scripts/scope_svg_ids.py && python scripts/add_svg_attribution.py`.
-5. On a macOS box, rasterize the SVG to `Assets/PNG/<CODE>.png`, `<CODE>@2x.png`, `<CODE>@3x.png` (21 × 15, 42 × 30, 63 × 45 — or 15 × 15 / 30 × 30 / 45 × 45 if the official flag is square). Create the matching `Sources/FlagKit/FlagKit.xcassets/<CODE>.imageset/` with `Contents.json` (no `1x` filename, just `@2x` and `@3x` per the post-#100 convention) and the rasterized `@2x.png` / `@3x.png`.
+5. On a macOS box, rasterize the SVG to `Assets/PNG/<CODE>.png`, `<CODE>@2x.png`, `<CODE>@3x.png` (21 × 15, 42 × 30, 63 × 45 — or 15 × 15 / 30 × 30 / 45 × 45 if the official flag is square). Create the matching `Sources/FlagHub/FlagHub.xcassets/<CODE>.imageset/` with `Contents.json` (no `1x` filename, just `@2x` and `@3x` per the post-#100 convention) and the rasterized `@2x.png` / `@3x.png`.
 6. Re-run `python scripts/optimize_pngs.py`.
 7. Commit, open a PR, let CodeRabbit + CI + auto-merge handle it.
 
@@ -370,11 +370,11 @@ git tag v3.0.0
 git push origin v3.0.0
 ```
 
-`release.yml` picks up the tag, builds, creates the GitHub Release with auto-generated notes and the framework tarball attached. If you've configured `COCOAPODS_TRUNK_TOKEN`, add a step that does `pod trunk push FlagKit.podspec` after the release artefact is uploaded.
+`release.yml` picks up the tag, builds, creates the GitHub Release with auto-generated notes and the framework tarball attached. If you've configured `COCOAPODS_TRUNK_TOKEN`, add a step that does `pod trunk push FlagHub.podspec` after the release artefact is uploaded.
 
 ### Reverting an asset
 
-`Assets/SVG/<CODE>.svg` and the corresponding xcassets imageset are independent of the Swift target — `git checkout <ref> -- Assets/SVG/<CODE>.svg Sources/FlagKit/FlagKit.xcassets/<CODE>.imageset/` is safe at any time. Re-run the two SVG scripts afterwards so the file picks up the fork's id-scoping and attribution comment.
+`Assets/SVG/<CODE>.svg` and the corresponding xcassets imageset are independent of the Swift target — `git checkout <ref> -- Assets/SVG/<CODE>.svg Sources/FlagHub/FlagHub.xcassets/<CODE>.imageset/` is safe at any time. Re-run the two SVG scripts afterwards so the file picks up the fork's id-scoping and attribution comment.
 
 ---
 

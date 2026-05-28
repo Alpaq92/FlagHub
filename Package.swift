@@ -4,31 +4,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "FlagKit",
+    name: "FlagHub",
     platforms: [
         .iOS(.v12),
         .tvOS(.v12),
         .macOS(.v10_12)
     ],
     products: [
-        .library(name: "FlagKit", targets: ["FlagKit"]),
+        .library(name: "FlagHub", targets: ["FlagHub"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "FlagKit",
+            name: "FlagHub",
             dependencies: [],
             exclude: [
                 "Info.plist",
-                "FlagKitFramework.xcconfig"
+                "FlagHubFramework.xcconfig"
             ]
         ),
         .testTarget(
-            name: "FlagKitTests",
-            dependencies: ["FlagKit"],
+            name: "FlagHubTests",
+            dependencies: ["FlagHub"],
             exclude: [
                 "Info.plist",
-                "FlagKitTests.xcconfig",
+                "FlagHubTests.xcconfig",
                 "ObjectiveCTests.m"
             ]
         )

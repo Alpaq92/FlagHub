@@ -22,7 +22,7 @@ Initial fork-flagkit release. See [docs/OVERVIEW.md](docs/OVERVIEW.md) for the f
 - CH and VA are now square (15 × 15) ([#91](https://github.com/madebybowtie/FlagKit/issues/91))
 - WW (world / default) flag restored from upstream pre-2.0 history ([#95](https://github.com/madebybowtie/FlagKit/issues/95))
 - Broken sample-project link removed from README ([#98](https://github.com/madebybowtie/FlagKit/issues/98))
-- `FlagKit.podspec` uses the correct `s.resources` attribute (PR #100's `s.resource_bundle` was invalid DSL and would have silently dropped the asset catalog at `pod install` time)
+- `FlagHub.podspec` uses the correct `s.resources` attribute (PR #100's `s.resource_bundle` was invalid DSL and would have silently dropped the asset catalog at `pod install` time)
 
 ### Added
 - `Flag.all` and `Flag.supportedCountryCodes` ([#92](https://github.com/madebybowtie/FlagKit/issues/92))

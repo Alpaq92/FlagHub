@@ -7,8 +7,8 @@
 import UIKit
 
 extension UIImage {
-    @available(*, unavailable, message: "FlagKit no longer has default styling of flags, create a Flag model and generate an image with the specified style") public convenience init?(flagImageWithCountryCode countryCode: String) {
-        self.init(named: countryCode, in: FlagKit.assetBundle, compatibleWith: nil)
+    @available(*, unavailable, message: "FlagHub no longer has default styling of flags, create a Flag model and generate an image with the specified style") public convenience init?(flagImageWithCountryCode countryCode: String) {
+        self.init(named: countryCode, in: FlagHub.assetBundle, compatibleWith: nil)
     }
 }
 
