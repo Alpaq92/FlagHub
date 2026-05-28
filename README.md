@@ -1,4 +1,4 @@
-![Header](Header.png)
+![Header](header.png)
 
 <div align="center">
 <a href="https://github.com/Carthage/Carthage" target="_blank">

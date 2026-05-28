@@ -124,7 +124,7 @@ Every raster asset in the repo has been recompressed losslessly. The upstream PN
 |---|---:|---:|---:|---:|
 | `Assets/PNG/` | 768 | 1,374 KiB | 798 KiB | 42% |
 | `Sources/FlagKit/FlagKit.xcassets/` | 512 | 882 KiB | 504 KiB | 43% |
-| `Header.png` | 1 | 100 KiB | 71 KiB | 29% |
+| `header.png` | 1 | 100 KiB | 71 KiB | 29% |
 | **Total** | **1,281** | **2,356 KiB** | **1,373 KiB** | **41.7%** |
 
 To re-run after editing PNG assets:
