@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Flag: KH - Cambodia
-  Source: FlagKit by Bowtie (https://github.com/madebybowtie/FlagKit)
+  Source: FlagHub (fork of FlagKit by Bowtie)
+  Upstream: https://github.com/madebybowtie/FlagKit
   License: MIT
 -->
 <svg width="21px" height="15px" viewBox="0 0 21 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

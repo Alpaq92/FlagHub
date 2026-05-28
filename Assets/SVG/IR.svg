@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Flag: IR - Iran
-  Source: FlagKit by Bowtie (https://github.com/madebybowtie/FlagKit)
+  Source: FlagHub (fork of FlagKit by Bowtie)
+  Upstream: https://github.com/madebybowtie/FlagKit
   License: MIT
 -->
 <svg width="21" height="15" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">

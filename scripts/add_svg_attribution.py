@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SVG_DIR = ROOT / "Assets" / "SVG"
 FLAGS_MD = ROOT / "Assets" / "Flags.md"
 
-MARKER = "Source: FlagKit by Bowtie"
+MARKER = "Source: FlagHub"
 
 ROW_RE = re.compile(r"\|\s*<img[^>]+>\s*\|\s*([A-Z]{2,3})\s*\|\s*([^|\n]+)")
 XML_DECL_RE = re.compile(r'(<\?xml[^?]*\?>)\s*\n')
@@ -42,7 +42,8 @@ def attribution_block(code: str, name: str | None) -> str:
     return (
         "<!--\n"
         f"  Flag: {display}\n"
-        f"  {MARKER} (https://github.com/madebybowtie/FlagKit)\n"
+        f"  {MARKER} (fork of FlagKit by Bowtie)\n"
+        "  Upstream: https://github.com/madebybowtie/FlagKit\n"
         "  License: MIT\n"
         "-->\n"
     )
