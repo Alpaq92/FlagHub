@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Flag: AQ - Antarctica
+  Source: FlagKit by Bowtie (https://github.com/madebybowtie/FlagKit)
+  License: MIT
+-->
+<svg width="21px" height="15px" viewBox="0 0 21 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AQ</title>
+    <desc>Graham Bartram's flag of Antarctica - white continent silhouette on UN blue.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="AQ_linearGradient-1">
+            <stop stop-color="#5DA9DF" offset="0%"></stop>
+            <stop stop-color="#4E9BD0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="AQ_linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F0F0F0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="AQ_Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AQ_AQ">
+            <rect id="AQ_FlagBackground" fill="url(#AQ_linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
+            <path id="AQ_Continent" fill="url(#AQ_linearGradient-2)" d="
+                M 9.0,3.4
+                Q 9.5,4.0 9.6,4.6
+                Q 10.1,5.0 10.8,5.0
+                Q 11.7,4.8 12.6,5.0
+                Q 13.6,5.2 14.5,5.7
+                Q 15.5,6.3 16.1,7.1
+                Q 16.5,7.9 16.3,8.7
+                Q 15.9,9.6 15.2,10.2
+                Q 14.0,11.0 12.6,11.3
+                Q 11.0,11.5 9.4,11.3
+                Q 7.7,11.0 6.2,10.4
+                Q 4.9,9.8 4.3,8.8
+                Q 4.0,7.8 4.5,6.9
+                Q 5.2,6.0 6.3,5.5
+                Q 7.4,5.1 8.4,4.8
+                Q 8.6,4.3 8.5,3.7
+                Q 8.7,3.4 9.0,3.4 Z
+            "></path>
+            <circle id="AQ_IslandSS" cx="7.7" cy="3.6" r="0.18" fill="url(#AQ_linearGradient-2)"></circle>
+            <circle id="AQ_IslandSO" cx="6.4" cy="4.2" r="0.13" fill="url(#AQ_linearGradient-2)"></circle>
+            <circle id="AQ_IslandSG" cx="5.0" cy="5.0" r="0.13" fill="url(#AQ_linearGradient-2)"></circle>
+        </g>
+    </g>
+</svg>
