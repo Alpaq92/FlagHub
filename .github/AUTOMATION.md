@@ -109,11 +109,10 @@ A PR is auto-merged only when **all** of these hold:
 
 1. Not a draft
 2. Created ≥ 7 days ago
-3. At least one **APPROVED** review whose author is either:
-   - listed in `.github/CODEOWNERS`,
-   - a repo collaborator, or
-   - `coderabbitai[bot]`
-4. No open **CHANGES_REQUESTED** review (latest-per-reviewer wins)
+3. **Approval** — one of:
+   - PR author is `dependabot[bot]` (the bot is the author-of-trust; no separate human review needed for routine dependency bumps), OR
+   - at least one **APPROVED** review whose author is in `.github/CODEOWNERS`, a repo collaborator, or `coderabbitai[bot]`
+4. No open **CHANGES_REQUESTED** review (latest-per-reviewer wins) — this still blocks Dependabot PRs if someone explicitly requests changes
 5. Every check run on the head SHA has `conclusion = success` (no failure, cancelled, timed-out, or pending)
 6. PR is mergeable (no conflicts)
 

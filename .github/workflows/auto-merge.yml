@@ -135,21 +135,30 @@ jobs:
                   core.info(`Skip: open CHANGES_REQUESTED from ${requestChanges.map(r => r.user.login).join(', ')}`);
                   continue;
                 }
-                if (approvers.length === 0) {
-                  core.info('Skip: no APPROVED reviews');
-                  continue;
-                }
 
+                // Dependabot's own PRs are treated as pre-approved by the bot
+                // itself - we trust the @dependabot author for its dependency
+                // updates. The 7-day age requirement still applies as a soak
+                // window, and CHANGES_REQUESTED above can still block.
+                const isDependabot = pr.user?.login === 'dependabot[bot]';
                 let eligibleApprover = null;
-                for (const r of approvers) {
-                  const login = r.user.login;
-                  if (APPROVER_BOTS.has(login)) { eligibleApprover = login; break; }
-                  if (ownersList.includes(login)) { eligibleApprover = login; break; }
-                  if (await isCollaborator(login)) { eligibleApprover = login; break; }
-                }
-                if (!eligibleApprover) {
-                  core.info(`Skip: approvals (${approvers.map(r => r.user.login).join(', ')}) are not code-owner, collaborator, or CodeRabbit`);
-                  continue;
+                if (isDependabot) {
+                  eligibleApprover = 'dependabot[bot] (author-trusted)';
+                } else {
+                  if (approvers.length === 0) {
+                    core.info('Skip: no APPROVED reviews');
+                    continue;
+                  }
+                  for (const r of approvers) {
+                    const login = r.user.login;
+                    if (APPROVER_BOTS.has(login)) { eligibleApprover = login; break; }
+                    if (ownersList.includes(login)) { eligibleApprover = login; break; }
+                    if (await isCollaborator(login)) { eligibleApprover = login; break; }
+                  }
+                  if (!eligibleApprover) {
+                    core.info(`Skip: approvals (${approvers.map(r => r.user.login).join(', ')}) are not code-owner, collaborator, or CodeRabbit`);
+                    continue;
+                  }
                 }
 
                 const { data: checks } = await github.rest.checks.listForRef({
