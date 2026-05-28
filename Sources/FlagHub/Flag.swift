@@ -39,12 +39,31 @@ public class Flag: NSObject {
      Returns a flag if the country code is supported, otherwise it returns nil
      */
     @objc public init?(countryCode: String) {
-        guard let image = UIImage(named: countryCode, in: FlagHub.assetBundle, compatibleWith: nil) else {
-            return nil
+        let bundle = FlagHub.assetBundle
+
+        // Asset catalog (Xcode-built framework: xcassets compiled into Assets.car)
+        if let image = UIImage(named: countryCode, in: bundle, compatibleWith: nil) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
         }
-        
-        self.countryCode = countryCode
-        self.originalImage = image
+
+        // SPM-built bundle: xcassets is copy-bundled verbatim. Read the @2x PNG
+        // straight out of the imageset folder.
+        let subdir = "FlagHub.xcassets/\(countryCode).imageset"
+        if let url = bundle.url(forResource: "\(countryCode)@2x", withExtension: "png", subdirectory: subdir),
+           let image = UIImage(contentsOfFile: url.path) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
+        }
+        if let url = bundle.url(forResource: "\(countryCode)@3x", withExtension: "png", subdirectory: subdir),
+           let image = UIImage(contentsOfFile: url.path) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
+        }
+        return nil
     }
     
     /**
@@ -78,12 +97,32 @@ public class Flag: NSObject {
      Returns a flag if the country code is supported, otherwise it returns nil
      */
     @objc public init?(countryCode: String) {
-        guard let image = FlagHub.assetBundle.image(forResource: countryCode) else {
-            return nil
+        let bundle = FlagHub.assetBundle
+
+        // Asset catalog (Xcode-built framework: xcassets compiled into Assets.car)
+        if let image = bundle.image(forResource: NSImage.Name(countryCode)) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
         }
-        
-        self.countryCode = countryCode
-        self.originalImage = image
+
+        // SPM-built bundle: xcassets is copy-bundled verbatim. Read the @2x PNG
+        // straight out of the imageset folder. (NSImage has no bundle-aware
+        // asset-catalog initializer the way UIImage does.)
+        let subdir = "FlagHub.xcassets/\(countryCode).imageset"
+        if let url = bundle.url(forResource: "\(countryCode)@2x", withExtension: "png", subdirectory: subdir),
+           let image = NSImage(contentsOf: url) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
+        }
+        if let url = bundle.url(forResource: "\(countryCode)@3x", withExtension: "png", subdirectory: subdir),
+           let image = NSImage(contentsOf: url) {
+            self.countryCode = countryCode
+            self.originalImage = image
+            return
+        }
+        return nil
     }
 #endif
 }

@@ -23,7 +23,11 @@ let package = Package(
                 "FlagHubFramework.xcconfig"
             ],
             resources: [
-                .process("FlagHub.xcassets")
+                // .copy (not .process) preserves the xcassets folder structure
+                // inside the bundle so the macOS NSImage path can read PNGs
+                // directly by URL. Xcode-built frameworks still compile the
+                // catalog the normal way.
+                .copy("FlagHub.xcassets")
             ]
         ),
         .testTarget(
@@ -35,7 +39,7 @@ let package = Package(
                 "ObjectiveCTests.m"
             ],
             resources: [
-                .process("Fixtures.xcassets")
+                .copy("Fixtures.xcassets")
             ]
         )
     ]
