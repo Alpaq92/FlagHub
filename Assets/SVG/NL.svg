@@ -4,25 +4,25 @@
     <title>NL</title>
     <desc>Created with sketchtool.</desc>
     <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="NL_linearGradient-1">
             <stop stop-color="#FFFFFF" offset="0%"></stop>
             <stop stop-color="#F0F0F0" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="NL_linearGradient-2">
             <stop stop-color="#CA2B39" offset="0%"></stop>
             <stop stop-color="#AC1F2C" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="NL_linearGradient-3">
             <stop stop-color="#2C56A2" offset="0%"></stop>
             <stop stop-color="#244889" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="NL">
-            <rect id="FlagBackground" fill="url(#linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
-            <rect id="Rectangle-2" fill="url(#linearGradient-2)" x="0" y="0" width="21" height="5"></rect>
-            <rect id="Rectangle-2" fill="url(#linearGradient-3)" x="0" y="10" width="21" height="5"></rect>
-            <rect id="Rectangle-2" fill="url(#linearGradient-1)" x="0" y="5" width="21" height="5"></rect>
+    <g id="NL_Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NL_NL">
+            <rect id="NL_FlagBackground" fill="url(#NL_linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
+            <rect id="NL_Rectangle-2" fill="url(#NL_linearGradient-2)" x="0" y="0" width="21" height="5"></rect>
+            <rect id="NL_Rectangle-2" fill="url(#NL_linearGradient-3)" x="0" y="10" width="21" height="5"></rect>
+            <rect id="NL_Rectangle-2" fill="url(#NL_linearGradient-1)" x="0" y="5" width="21" height="5"></rect>
         </g>
     </g>
 </svg>

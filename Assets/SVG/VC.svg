@@ -4,34 +4,34 @@
     <title>VC</title>
     <desc>Created with sketchtool.</desc>
     <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="VC_linearGradient-1">
             <stop stop-color="#FFFFFF" offset="0%"></stop>
             <stop stop-color="#F0F0F0" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="VC_linearGradient-2">
             <stop stop-color="#08C47A" offset="0%"></stop>
             <stop stop-color="#009F60" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="VC_linearGradient-3">
             <stop stop-color="#0C87E1" offset="0%"></stop>
             <stop stop-color="#0073C7" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="VC_linearGradient-4">
             <stop stop-color="#FFD147" offset="0%"></stop>
             <stop stop-color="#FECA2F" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="VC_linearGradient-5">
             <stop stop-color="#00C778" offset="0%"></stop>
             <stop stop-color="#009F60" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="VC">
-            <rect id="FlagBackground" fill="url(#linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
-            <rect id="Mask" fill="url(#linearGradient-2)" x="10" y="0" width="11" height="15"></rect>
-            <rect id="Rectangle-2" fill="url(#linearGradient-3)" x="0" y="0" width="7" height="15"></rect>
-            <rect id="Rectangle-2-Copy" fill="url(#linearGradient-4)" x="6" y="0" width="9" height="15"></rect>
-            <path d="M11,6 L12.5,3 L14,6 L12.5,9 L11,6 Z M7,6 L8.5,3 L10,6 L8.5,9 L7,6 Z M9,10 L10.5,7 L12,10 L10.5,13 L9,10 Z" id="Rectangle-1194" fill="url(#linearGradient-5)"></path>
+    <g id="VC_Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="VC_VC">
+            <rect id="VC_FlagBackground" fill="url(#VC_linearGradient-1)" x="0" y="0" width="21" height="15"></rect>
+            <rect id="VC_Mask" fill="url(#VC_linearGradient-2)" x="10" y="0" width="11" height="15"></rect>
+            <rect id="VC_Rectangle-2" fill="url(#VC_linearGradient-3)" x="0" y="0" width="7" height="15"></rect>
+            <rect id="VC_Rectangle-2-Copy" fill="url(#VC_linearGradient-4)" x="6" y="0" width="9" height="15"></rect>
+            <path d="M11,6 L12.5,3 L14,6 L12.5,9 L11,6 Z M7,6 L8.5,3 L10,6 L8.5,9 L7,6 Z M9,10 L10.5,7 L12,10 L10.5,13 L9,10 Z" id="VC_Rectangle-1194" fill="url(#VC_linearGradient-5)"></path>
         </g>
     </g>
 </svg>
