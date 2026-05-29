@@ -16,7 +16,8 @@ on:
       - '**.md'
       - 'docs/**'
       - 'LICENSE'
-      - 'header.png'
+      - 'header-light.png'
+      - 'header-dark.png'
       - 'docs/AUTOMATION.md'
       - 'SECURITY.md'
       - 'CHANGELOG.md'
@@ -133,7 +134,8 @@ jobs:
             README.md \
             CHANGELOG.md \
             docs/OVERVIEW.md \
-            header.png
+            header-light.png \
+            header-dark.png
           if [[ -d .build/xcframework/FlagHub.xcframework ]]; then
             tar -czf "dist/FlagHub-${{ steps.meta.outputs.version }}-xcframework.tar.gz" \
               -C .build/xcframework FlagHub.xcframework

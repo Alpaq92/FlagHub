@@ -14,7 +14,10 @@
 </div>
 
 <p align="center">
-  <img src="header.png" alt="FlagHub 3.0">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="header-dark.png">
+    <img src="header-light.png" alt="FlagHub 3.0">
+  </picture>
 </p>
 
 Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) — every open upstream PR merged, packaging issues fixed, two Swift API conveniences added. The flag artwork is identical to upstream.

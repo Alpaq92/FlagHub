@@ -3,7 +3,7 @@
 Touches:
   - Assets/PNG/*.png
   - Sources/FlagHub/FlagHub.xcassets/**/*.png
-  - header.png
+  - header-light.png, header-dark.png
   - icon.png
 
 oxipng is a pure-Rust reimplementation of OptiPNG; level 6 (max) is
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TARGETS: list[Path] = []
 TARGETS.extend(sorted((ROOT / "Assets" / "PNG").glob("*.png")))
 TARGETS.extend(sorted((ROOT / "Sources" / "FlagHub" / "FlagHub.xcassets").rglob("*.png")))
-for root_asset in ("header.png", "icon.png"):
+for root_asset in ("header-light.png", "header-dark.png", "icon.png"):
     p = ROOT / root_asset
     if p.exists():
         TARGETS.append(p)

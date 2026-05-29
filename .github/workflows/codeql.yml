@@ -3,10 +3,10 @@ name: CodeQL
 on:
   push:
     branches: [main, master, fork-flagkit]
-    paths-ignore: ['**.md', 'docs/**', 'LICENSE', 'header.png', 'SECURITY.md']
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', 'header-light.png', 'header-dark.png', 'SECURITY.md']
   pull_request:
     branches: [main, master, fork-flagkit]
-    paths-ignore: ['**.md', 'docs/**', 'LICENSE', 'header.png', 'SECURITY.md']
+    paths-ignore: ['**.md', 'docs/**', 'LICENSE', 'header-light.png', 'header-dark.png', 'SECURITY.md']
   schedule:
     - cron: '17 6 * * 1'  # Mondays 06:17 UTC
 
