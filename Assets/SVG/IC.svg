@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Flag: IC - Canary Islands
+  Source: FlagHub (fork of FlagKit by Bowtie)
+  Upstream: https://github.com/madebybowtie/FlagKit
+  Glyph: ported from murgupluoglu/flagkit-android
+         (MIT, https://github.com/murgupluoglu/flagkit-android)
+  License: MIT
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="15" viewBox="0 0 21 15">
+  <defs><clipPath id="clip1"><path d="M0,0l21,0l0,15l-21,0z"/></clipPath></defs>
+  <g clip-path="url(#clip1)">
+  <path d="M0,0L21,0L21,15L0,15Z" fill="#0768a9" fill-rule="evenodd" />
+  <path d="M0,0L6.999,0L6.999,15L0,15Z" fill="#ffffff" fill-rule="evenodd" />
+  <path d="M14.001,0L21,0L21,15L14.001,15Z" fill="#ffcc00" fill-rule="evenodd" />
+  </g>
+</svg>

@@ -10,8 +10,14 @@ Entries under `[Unreleased]` are appended automatically by `.github/workflows/ch
 
 <!-- Auto-generated entries are inserted directly below this line by the changelog workflow. Do not delete the heading or the comment - the workflow looks for them. -->
 
+## [3.0.4] - 2026-05-29
+
 ### Added
+- Five flags previously absent from the upstream set: **AQ** (Antarctica), **BQ** (Bonaire, Sint Eustatius and Saba), **DG** (Diego Garcia / BIOT), **EH** (Western Sahara), **IC** (Canary Islands — simplified tricolor, no coat of arms). Ported from [`murgupluoglu/flagkit-android`](https://github.com/murgupluoglu/flagkit-android) (MIT) via a VectorDrawable → SVG converter at `scripts/port_flags_from_android.py`. Tier-3 issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://github.com/madebybowtie/FlagKit/issues/73), [#83](https://github.com/madebybowtie/FlagKit/issues/83), [#84](https://github.com/madebybowtie/FlagKit/issues/84), [#97](https://github.com/madebybowtie/FlagKit/issues/97), [#101](https://github.com/madebybowtie/FlagKit/issues/101) are partially resolved; AC, CP, EA, TA remain absent.
 - `icon.png` at repo root — a royal-blue wireframe globe (from icones.pro, [license](https://icones.pro/en/icon-license/)) on a white-to-cool-grey round gradient plate with subtle glass treatments and a drop-shadow + sphere-lighting gradient on the glyph. Regeneration script: `scripts/generate_icon.py`.
+
+### Changed
+- **BREAKING**: asset scope narrowed to **geo-political flags only** — sovereign states, dependencies, sub-national entities, and intergovernmental bodies (EU, WW). One non-geo-political code that upstream FlagKit shipped was removed accordingly; consumers who depended on it can take the artwork from upstream FlagKit or supply their own asset. Net effect with the five additions above: `Flag.supportedCountryCodes.count` is **260** (was 256: +5 ports, −1 removal).
 
 ## [3.0.3] - 2026-05-28
 
@@ -49,6 +55,7 @@ Initial fork-flagkit release. See [docs/OVERVIEW.md](docs/OVERVIEW.md) for the f
 - `.gitignore` expanded for Python tooling (`scripts/`), Windows, Linux, IDE artefacts
 - README slimmed to a quick pitch; full project state in [docs/OVERVIEW.md](docs/OVERVIEW.md)
 
-[Unreleased]: https://github.com/Alpaq92/FlagHub/compare/v3.0.3...HEAD
+[Unreleased]: https://github.com/Alpaq92/FlagHub/compare/v3.0.4...HEAD
+[3.0.4]: https://github.com/Alpaq92/FlagHub/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/Alpaq92/FlagHub/compare/v3.0.0...v3.0.3
 [3.0.0]: https://github.com/Alpaq92/FlagHub/releases/tag/v3.0.0

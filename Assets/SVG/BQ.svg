@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Flag: BQ - Bonaire, Sint Eustatius and Saba
+  Source: FlagHub (fork of FlagKit by Bowtie)
+  Upstream: https://github.com/madebybowtie/FlagKit
+  Glyph: ported from murgupluoglu/flagkit-android
+         (MIT, https://github.com/murgupluoglu/flagkit-android)
+  License: MIT
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="15" viewBox="0 0 21 15">
+  <path d="M0,0H21V15H0Z" fill="#ffffff" />
+  <path d="M21,0V15H0Z" fill="#003087" />
+  <path d="M0,6.25V0h8.75z" fill="#ffd700" />
+  <path d="M5.833,2.708 L7.854,6.458 5.833,10.208 3.813,6.458ZM9.333,6.458 L5.833,8.623 2.333,6.458 5.833,4.293Z" fill="#FF000000" />
+  <path d="M5.833,6.458m-3.031,0a3.248,3.031 90,1 1,6.062 0a3.248,3.031 90,1 1,-6.062 0" fill="#FF000000" />
+  <path d="M5.833,6.458m-2.625,0a2.812,2.625 90,1 1,5.25 0a2.812,2.625 90,1 1,-5.25 0" fill="#ffffff" />
+  <path d="m5.833,8.333 l-1.516,-2.812l3.031,0zM5.833,4.583 L7.349,7.396l-3.031,0z" fill="#d50032" />
+</svg>

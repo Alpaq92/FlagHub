@@ -260,7 +260,6 @@ extension Flag {
         Flag(countryCode: "GB-SCT")!,
         Flag(countryCode: "GB-WLS")!,
         Flag(countryCode: "GB-ZET")!,
-        Flag(countryCode: "LGBT")!,
         Flag(countryCode: "US-CA")!,
     ]
 }

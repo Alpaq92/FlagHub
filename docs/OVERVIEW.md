@@ -67,9 +67,25 @@ All seven open pull requests on upstream were fast-forwarded onto this fork. Con
 
 Issues [#62](https://github.com/madebybowtie/FlagKit/issues/62) (CN stars), [#70](https://github.com/madebybowtie/FlagKit/issues/70) (MD coat of arms), [#76](https://github.com/madebybowtie/FlagKit/issues/76) (US 15 stripes / 18 dots), [#96](https://github.com/madebybowtie/FlagKit/issues/96) (ZW missing Hungwe bird), and [#104](https://github.com/madebybowtie/FlagKit/issues/104) (AL eagle and red) all flag genuine defects in the upstream artwork. Hand-drawn corrections for each were prototyped and **reverted** — the replacement artwork did not meet the quality bar of the rest of the upstream set. The pure-geometry pieces (US stripe count, CN star positions per the 1949 construction sheet) were correct as math but still hand-edited SVGs which is hard to justify next to professional vector artwork. Fixing these flags properly needs a vector illustrator. The commits remain in branch history.
 
-### Tier 3 — missing flags (reverted)
+### Tier 3 — missing flags (partial — 5 of 9 added)
 
-Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://github.com/madebybowtie/FlagKit/issues/73), [#83](https://github.com/madebybowtie/FlagKit/issues/83), [#84](https://github.com/madebybowtie/FlagKit/issues/84), [#97](https://github.com/madebybowtie/FlagKit/issues/97), [#101](https://github.com/madebybowtie/FlagKit/issues/101) collectively requested AC, AQ, BQ, CP, DG, EA, EH, IC, TA. Hand-drawn approximations were prototyped and **reverted** for the same reason: the silhouettes did not meet upstream's quality bar, and shipping low-fidelity artwork is a worse outcome than leaving codes unsupported. Commits remain in branch history. Net: this fork carries the same 256 flags as upstream.
+Issues [#36](https://github.com/madebybowtie/FlagKit/issues/36), [#73](https://github.com/madebybowtie/FlagKit/issues/73), [#83](https://github.com/madebybowtie/FlagKit/issues/83), [#84](https://github.com/madebybowtie/FlagKit/issues/84), [#97](https://github.com/madebybowtie/FlagKit/issues/97), [#101](https://github.com/madebybowtie/FlagKit/issues/101) collectively requested AC, AQ, BQ, CP, DG, EA, EH, IC, TA. The first attempt was hand-drawn approximations; those were **reverted** because the silhouettes did not meet upstream's quality bar.
+
+**Five of the nine were subsequently ported from [`murgupluoglu/flagkit-android`](https://github.com/murgupluoglu/flagkit-android)** (MIT) — a hand-authored vector flag library that ships several codes upstream FlagKit lacks. The Android `VectorDrawable` XML maps mechanically to SVG (`pathData` → `d`, `fillColor` → `fill`, `fillType="evenOdd"` → `fill-rule="evenodd"`, group transforms map directly); the converter lives at `scripts/port_flags_from_android.py` and is reproducible. Ported codes:
+
+| Code | Country / region | Source detail |
+|---|---|---|
+| AQ | Antarctica | UN-style 2002 design — blue with white continental silhouette |
+| BQ | Bonaire, Sint Eustatius and Saba | Yellow/blue/white tri-triangle with red compass star |
+| DG | Diego Garcia (BIOT) | Union Jack canton, wavy stripes, palm tree, St. Edward's crown |
+| EH | Western Sahara | SADR — red triangle, black/white/green stripes, red star + crescent |
+| IC | Canary Islands | Simplified tricolor (white / blue / yellow); coat of arms omitted, matching the murgupluoglu source |
+
+Total ships now: **260 flags**. (Net change vs. upstream: +5 from `flagkit-android`, −1 from dropping the Pride flag — see [Scope](#scope) — yielding 260.) The remaining four Tier-3 codes — **AC** (Ascension Island), **CP** (Clipperton Island), **EA** (Ceuta + Melilla), **TA** (Tristan da Cunha) — are not in `flagkit-android` either and are still missing. Hand-drawn prototypes for those remain reverted; commits are in branch history.
+
+### Scope
+
+FlagHub ships **geo-political flags only** — sovereign-state, dependency, sub-national, and intergovernmental (EU, WW). Codes that upstream FlagKit shipped which fall outside that scope have been removed in this fork; consumers who need such artwork can pull it from upstream FlagKit directly or supply their own asset.
 
 ### Tier 4 — code features
 
@@ -97,9 +113,9 @@ The Tier 1 viewBox crop on `CH.svg` and `VA.svg` was applied to the SVGs but the
 
 This is the only outstanding PNG regen — Tier 2 SVG changes that would have needed re-rasterising were reverted.
 
-### Nine missing-flag ISO codes (Tier 3)
+### Four still-missing ISO codes (Tier 3 remainder)
 
-Hand-drawn approximations for AC, AQ, BQ, CP, DG, EA, EH, IC, TA were attempted and reverted (see Tier 3 above). Adding these properly requires a vector illustrator (Sketch / Illustrator / Affinity / Inkscape) and ideally public-domain reference SVGs — out of scope for raw-XML editing.
+After porting AQ, BQ, DG, EH, IC from `flagkit-android` (see Tier 3 above), the codes **AC, CP, EA, TA** are still unsupported because neither upstream FlagKit nor `flagkit-android` ship them. Adding these properly requires a vector illustrator (Sketch / Illustrator / Affinity / Inkscape) and ideally public-domain reference SVGs — out of scope for raw-XML editing.
 
 ### Heraldic-accuracy redraws of the complex emblems
 
@@ -241,7 +257,7 @@ Flag.supportedCountryCodes  // ["AD", "AE", "AF", … 256 entries …]
 Flag.all                    // [Flag, Flag, Flag, …]
 ```
 
-The list is mostly ISO 3166-1 alpha-2, with these additions: `EU`, `WW`, `LGBT`, `GB-ENG`, `GB-NIR`, `GB-SCT`, `GB-WLS`, `GB-ZET`, `US-CA`.
+The list is mostly ISO 3166-1 alpha-2, with these additions: `EU`, `WW`, `GB-ENG`, `GB-NIR`, `GB-SCT`, `GB-WLS`, `GB-ZET`, `US-CA`.
 
 ### SwiftUI
 
@@ -334,13 +350,16 @@ Python utilities in `scripts/`, all idempotent — running them on a clean tree 
 | `scripts/add_svg_attribution.py` | Prepends a standard MIT attribution comment to every SVG: source = FlagHub (fork of FlagKit by Bowtie), upstream URL, license = MIT. Country name pulled from `Assets/Flags.md`. Fixes [#106](https://github.com/madebybowtie/FlagKit/issues/106) |
 | `scripts/optimize_pngs.py` | Losslessly recompresses every PNG in the repo with `oxipng -o 6`. Requires `pip install pyoxipng`. See [PNG optimization](#png-optimization) for tool-choice rationale |
 | `scripts/generate_icon.py` | Renders `icon.png` at repo root. See [Icon](#icon) for the design rationale, source attribution, and tweakable parameters. Requires Pillow + numpy |
+| `scripts/generate_header.py` | Rebuilds `header-light.png` + `header-dark.png` from `scripts/header_source.png` (upstream FlagKit Header.png): wipes the FLAGKIT-2.0 text band, renders "FlagHub 3.0" in Segoe UI Bold + Light at the same cap height, crops to content bbox + a small margin |
+| `scripts/port_flags_from_android.py` | Converts the five flag VectorDrawable XMLs in `scripts/vd_src/` (AQ, BQ, DG, EH, IC, sourced from `murgupluoglu/flagkit-android`) to SVG, rasterises at 21×15, 42×30, 63×45, drops files into `Assets/SVG/`, `Assets/PNG/`, and `Sources/FlagHub/FlagHub.xcassets/<CODE>.imageset/`, then patches `Sources/FlagHub/FlagCodes.swift` and `Assets/Flags.md` to register the codes. Idempotent — re-running on an already-ported tree is a no-op. Requires Pillow + PyMuPDF |
 
 Re-run after asset edits:
 
 ```sh
-python scripts/scope_svg_ids.py        # if you added or edited an SVG
-python scripts/add_svg_attribution.py  # if you added a new SVG
-python scripts/optimize_pngs.py        # if you added or replaced a PNG
+python scripts/scope_svg_ids.py            # if you added or edited an SVG
+python scripts/add_svg_attribution.py      # if you added a new SVG
+python scripts/optimize_pngs.py            # if you added or replaced a PNG
+python scripts/port_flags_from_android.py  # if you dropped new VectorDrawable XMLs under scripts/vd_src/
 ```
 
 ---

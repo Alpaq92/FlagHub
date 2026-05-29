@@ -22,7 +22,7 @@
 
 Apple-platforms flag-icon library. Fork of [madebybowtie/FlagKit](https://github.com/madebybowtie/FlagKit) — every open upstream PR merged, packaging issues fixed, two Swift API conveniences added. The flag artwork is identical to upstream.
 
-**256 flags. iOS · macOS · tvOS · visionOS.**
+**260 flags. iOS · macOS · tvOS · visionOS.**
 
 For a detailed overview of this project's state, see [docs/OVERVIEW.md](docs/OVERVIEW.md).
 

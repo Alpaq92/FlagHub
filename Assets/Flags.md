@@ -11,6 +11,7 @@ This set currently includes the 256 flags below:
 | <img src='PNG/AL@2x.png?raw=true' width='21' height='15'> | AL | Albania
 | <img src='PNG/AM@2x.png?raw=true' width='21' height='15'> | AM | Armenia
 | <img src='PNG/AO@2x.png?raw=true' width='21' height='15'> | AO | Angola
+| <img src='PNG/AQ@2x.png?raw=true' width='21' height='15'> | AQ | Antarctica
 | <img src='PNG/AR@2x.png?raw=true' width='21' height='15'> | AR | Argentina
 | <img src='PNG/AS@2x.png?raw=true' width='21' height='15'> | AS | American Samoa
 | <img src='PNG/AT@2x.png?raw=true' width='21' height='15'> | AT | Austria
@@ -31,6 +32,7 @@ This set currently includes the 256 flags below:
 | <img src='PNG/BM@2x.png?raw=true' width='21' height='15'> | BM | Bermuda
 | <img src='PNG/BN@2x.png?raw=true' width='21' height='15'> | BN | Brunei
 | <img src='PNG/BO@2x.png?raw=true' width='21' height='15'> | BO | Bolivia
+| <img src='PNG/BQ@2x.png?raw=true' width='21' height='15'> | BQ | Bonaire, Sint Eustatius and Saba
 | <img src='PNG/BR@2x.png?raw=true' width='21' height='15'> | BR | Brazil
 | <img src='PNG/BS@2x.png?raw=true' width='21' height='15'> | BS | Bahamas
 | <img src='PNG/BT@2x.png?raw=true' width='21' height='15'> | BT | Bhutan
@@ -58,6 +60,7 @@ This set currently includes the 256 flags below:
 | <img src='PNG/CY@2x.png?raw=true' width='21' height='15'> | CY | Cyprus
 | <img src='PNG/CZ@2x.png?raw=true' width='21' height='15'> | CZ | Czech Republic
 | <img src='PNG/DE@2x.png?raw=true' width='21' height='15'> | DE | Germany
+| <img src='PNG/DG@2x.png?raw=true' width='21' height='15'> | DG | Diego Garcia (BIOT)
 | <img src='PNG/DJ@2x.png?raw=true' width='21' height='15'> | DJ | Djibouti
 | <img src='PNG/DK@2x.png?raw=true' width='21' height='15'> | DK | Denmark
 | <img src='PNG/DM@2x.png?raw=true' width='21' height='15'> | DM | Dominica
@@ -66,6 +69,7 @@ This set currently includes the 256 flags below:
 | <img src='PNG/EC@2x.png?raw=true' width='21' height='15'> | EC | Ecuador
 | <img src='PNG/EE@2x.png?raw=true' width='21' height='15'> | EE | Estonia
 | <img src='PNG/EG@2x.png?raw=true' width='21' height='15'> | EG | Egypt
+| <img src='PNG/EH@2x.png?raw=true' width='21' height='15'> | EH | Western Sahara
 | <img src='PNG/ER@2x.png?raw=true' width='21' height='15'> | ER | Eritrea
 | <img src='PNG/ES@2x.png?raw=true' width='21' height='15'> | ES | Spain
 | <img src='PNG/ET@2x.png?raw=true' width='21' height='15'> | ET | Ethiopia
@@ -106,6 +110,7 @@ This set currently includes the 256 flags below:
 | <img src='PNG/HR@2x.png?raw=true' width='21' height='15'> | HR | Croatia
 | <img src='PNG/HT@2x.png?raw=true' width='21' height='15'> | HT | Haiti
 | <img src='PNG/HU@2x.png?raw=true' width='21' height='15'> | HU | Hungary
+| <img src='PNG/IC@2x.png?raw=true' width='21' height='15'> | IC | Canary Islands
 | <img src='PNG/ID@2x.png?raw=true' width='21' height='15'> | ID | Indonesia
 | <img src='PNG/IE@2x.png?raw=true' width='21' height='15'> | IE | Ireland
 | <img src='PNG/IL@2x.png?raw=true' width='21' height='15'> | IL | Israel
@@ -134,7 +139,6 @@ This set currently includes the 256 flags below:
 | <img src='PNG/LA@2x.png?raw=true' width='21' height='15'> | LA | Laos
 | <img src='PNG/LB@2x.png?raw=true' width='21' height='15'> | LB | Lebanon
 | <img src='PNG/LC@2x.png?raw=true' width='21' height='15'> | LC | St. Lucia
-| <img src='PNG/LGBT@2x.png?raw=true' width='21' height='15'> | LGBT | Pride
 | <img src='PNG/LI@2x.png?raw=true' width='21' height='15'> | LI | Liechtenstein
 | <img src='PNG/LK@2x.png?raw=true' width='21' height='15'> | LK | Sri Lanka
 | <img src='PNG/LR@2x.png?raw=true' width='21' height='15'> | LR | Liberia

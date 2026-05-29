@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Flag: EH - Western Sahara
+  Source: FlagHub (fork of FlagKit by Bowtie)
+  Upstream: https://github.com/madebybowtie/FlagKit
+  Glyph: ported from murgupluoglu/flagkit-android
+         (MIT, https://github.com/murgupluoglu/flagkit-android)
+  License: MIT
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="15" viewBox="0 0 21 15">
+  <defs><clipPath id="clip1"><path d="M-0,0l21,0l0,15.001l-21,0z"/></clipPath></defs>
+  <g clip-path="url(#clip1)">
+  <path d="M-0,0L21.001,0L21.001,7.5L-0,7.5Z" fill="#000000" fill-rule="evenodd" />
+  <path d="M-0,7.5L21.001,7.5L21.001,15L-0,15Z" fill="#007a3d" fill-rule="evenodd" />
+  <path d="M-0,4.374L21.001,4.374l0,6.251L-0,10.626Z" fill="#ffffff" fill-rule="evenodd" />
+  <path d="M-0,0 L10.499,7.5 -0,15Z" fill="#c4111b" fill-rule="evenodd" />
+  <path d="m15.749,9.501c1.16,0 2.1,-0.896 2.1,-2.001 0,-1.105 -0.94,-2.001 -2.1,-2.001 -1.16,0 -2.1,0.896 -2.1,2.001 0,1.105 0.94,2.001 2.1,2.001z" fill="#c4111b" />
+  <path d="m16.538,9.501c1.16,0 2.1,-0.896 2.1,-2.001 0,-1.105 -0.94,-2.001 -2.1,-2.001 -1.16,0 -2.1,0.896 -2.1,2.001 0,1.105 0.94,2.001 2.1,2.001z" fill="#ffffff" />
+  <path d="m15.184,8.71 l0.898,-0.608 0.888,0.617 -0.333,-0.999 0.894,-0.614 -1.101,-0.006 -0.339,-0.999 -0.345,0.996 -1.101,-0.006 0.885,0.623 -0.342,0.999z" fill="#c4111b" fill-rule="evenodd" />
+  </g>
+</svg>
